@@ -1,0 +1,44 @@
+#settings {
+    background-color: whitesmoke;
+    text-align: center;
+    font-family: initial;
+    font-size: 25px;
+    color: darkslategrey;
+    visibility: visible;
+    width: 600px;
+    position: relative;
+    transform: translate(-50%);
+    left: 50%;
+}
+
+h1 {
+    color: lightsteelblue;
+    font-family: initial;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    color: slategray;
+    font-family: initial;
+    font-size: 40px;
+    text-align: center;
+}
+
+#Button1 {
+    color: darkslategrey;
+    font-family: initial;
+    background-color: lightgray;
+    padding: 40px;
+    border: lightblue dotted;
+    font-size: 30px;
+}
+
+p {
+    text-align: center;
+}
+
+span {
+    display: grid;
+    text-align: center;
+}
