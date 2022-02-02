@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Döner_Trainer</title>
     <link rel="stylesheet" href="index.css">
+    <script src="Main.js"></script>
 </head>
 
 <body>
+
     <h1>Döner Trainer</h1>
-    <h2 id="title2">Settings</h2>
-    <div id="settings">
+    <form id="settings">
+        <h2 id="title2">Settings</h2>
         <fieldset>
             <legend>staff amount</legend>
             <label for="staffamount" value="2">2</label>
@@ -49,10 +51,12 @@
             <input type="radio" name="restperiod" value="3"><br>
         </fieldset>
         <br>
-        <input id="Button1" type="button" value="start Game" class="start" onclick="enterTerm()" />
+        <input id="startButton" type="button" value="start Game" class="start" />
         </fieldset>
+    </form>
+    <div id="canvas">
+        <canvas width=1000 height=800></canvas>
     </div>
-    <canvas width=1000 height=800></canvas>
 </body>
 
 </html>
