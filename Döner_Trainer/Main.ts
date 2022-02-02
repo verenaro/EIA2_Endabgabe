@@ -1,3 +1,9 @@
+/*Endabgabe EIA2_Döner_Trainer
+Name: Verena Rothweiler
+Matrikel: 270156
+Datum: 
+Quellen: Zusammenarbeit mit Neslisah Koc
+*/
 namespace EIA2_Endabgabe_Döner_Trainer {
 
     let formData: FormData;
@@ -54,10 +60,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
-        drawCustomer(new Vector(200, 300));
+        drawCustomer(new Vector(400, 300));
         drawSalad(new Vector(800, 470));
-        drawTomatoes(new Vector(900, 470));
-
 
     }
 
@@ -96,6 +100,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.fillStyle = "lightblue";
         crc2.fill();
         crc2.closePath();
+        //Head
         crc2.beginPath();
         crc2.fillStyle = "#FBF2EF";
         crc2.arc(132, -43, 30, 0, 2 * Math.PI);
@@ -138,7 +143,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.arc(93, 15, 7, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
-        //Hands2
+        //Feet
         crc2.beginPath();
         crc2.fillStyle = "grey";
         crc2.arc(150, 60, 10, 0, 2 * Math.PI);
@@ -148,8 +153,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.restore();
         crc2.closePath();
         crc2.beginPath();
-
-
     }
 
     function drawSalad(_position: Vector): void {
@@ -167,23 +170,5 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.arc(114, -65, 10, 0, 2 * Math.PI);
         crc2.fill();
     }
-    function drawTomatoes(_position: Vector): void {
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        crc2.fill();
-    }
-
-
-
 
 }

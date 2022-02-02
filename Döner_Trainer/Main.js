@@ -1,4 +1,10 @@
 "use strict";
+/*Endabgabe EIA2_Döner_Trainer
+Name: Verena Rothweiler
+Matrikel: 270156
+Datum:
+Quellen: Zusammenarbeit mit Neslisah Koc
+*/
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     let formData;
@@ -25,9 +31,8 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
-        drawCustomer(new EIA2_Endabgabe_Döner_Trainer.Vector(200, 300));
+        drawCustomer(new EIA2_Endabgabe_Döner_Trainer.Vector(400, 300));
         drawSalad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470));
-        drawTomatoes(new EIA2_Endabgabe_Döner_Trainer.Vector(900, 470));
     }
     function drawCounter(_position) {
         //draw counter
@@ -61,6 +66,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "lightblue";
         EIA2_Endabgabe_Döner_Trainer.crc2.fill();
         EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+        //Head
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FBF2EF";
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -43, 30, 0, 2 * Math.PI);
@@ -103,7 +109,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(93, 15, 7, 0, 2 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        //Hands2
+        //Feet
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "grey";
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(150, 60, 10, 0, 2 * Math.PI);
@@ -118,21 +124,6 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "green";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-    }
-    function drawTomatoes(_position) {
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "red";
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
