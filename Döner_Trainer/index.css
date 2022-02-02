@@ -45,3 +45,14 @@ footer {
     text-align: center;
     margin-top: 100px;
 }
+
+#time {
+    margin: auto;
+    width: 175px;
+    height: 80px;
+    background-color: slategray;
+    color: cadetblue;
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 45%;
+}
