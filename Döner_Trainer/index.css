@@ -25,20 +25,11 @@ h2 {
     text-align: center;
 }
 
-#Button1 {
+#startButton {
     color: darkslategrey;
     font-family: initial;
     background-color: lightgray;
     padding: 40px;
     border: lightblue dotted;
     font-size: 30px;
-}
-
-p {
-    text-align: center;
-}
-
-span {
-    display: grid;
-    text-align: center;
 }
