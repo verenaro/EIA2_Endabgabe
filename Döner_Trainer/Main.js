@@ -3,6 +3,8 @@ var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     let formData;
     // let staffAmount: number;
+    // let storageCapacity: number;
+    // let containerCapacity: number;
     // let kebap: string[] = ["flatbread", "vegan meat"];
     // let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
     // let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
@@ -10,6 +12,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     function handleLoad() {
         let startButton = document.querySelector("#startButton");
         startButton.addEventListener("click", prepareGame);
+        document.getElementById("gamefield").hidden = true;
         //drawBackground();
     }
     function prepareGame() {
@@ -21,11 +24,12 @@ var EIA2_Endabgabe_Döner_Trainer;
         console.log(formData);
     }
     function buildGamescreen() {
+        document.getElementById("gamefield").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
     }
     function drawBackground(_position) {
-        //Strunk
+        //counter
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "brown";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x + -300, _position.y + 400, 25, 110);
