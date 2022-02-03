@@ -67,10 +67,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         
         buildGamescreen();
         console.log(staffAmount);
+        console.log(formData);
 
-        
-        
-        
 
     }
     
