@@ -8,6 +8,7 @@ Quellen: Zusammenarbeit mit Neslisah Koc
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     let formData;
+    let ingredient = [];
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         let startButton = document.querySelector("#startButton");
@@ -37,6 +38,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
+        drawSalad();
     }
     function drawCounter(_position) {
         //draw counter
@@ -65,6 +67,11 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
+    }
+    function drawSalad() {
+        let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), 20, 20);
+        ingredient.push(salad);
+        ingredient.draw();
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

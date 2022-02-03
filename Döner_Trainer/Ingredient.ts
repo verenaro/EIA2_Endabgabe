@@ -3,10 +3,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         position: Vector;
         amount: number;
         containeramount: number;
-        type: string;
-        size: Vector;
+       
 
-        constructor(_position: Vector, _amount: number, _containeramount: number, _type: string, _size: Vector) {
+        constructor(_position: Vector, _amount: number, _containeramount: number) {
             if (_position)
                 this.position = _position;
             else
@@ -14,8 +13,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
             this.amount = _amount;
             this.containeramount = _containeramount;
-            this.type = _type;
-            this.size = _size;
+           
 
         }
 

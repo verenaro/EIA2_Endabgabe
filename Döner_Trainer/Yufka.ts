@@ -2,7 +2,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     export class Yufka extends Ingredient {
 
         constructor(_position: Vector, _amount: number, _containeramount: number, _type: string, _size: Vector) {
-            super(_position, _amount, _containeramount, _type, _size);
+            super(_position, _amount, _containeramount);
         }
 
         draw(): void {

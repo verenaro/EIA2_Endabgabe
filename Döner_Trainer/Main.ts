@@ -11,9 +11,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     //let gameTimer: number;
     //let countDown: number;
     //let time: HTMLDivElement;
-    // let staffAmount: number;
-    // let storageCapacity: number;
-    // let containerCapacity: number;
+    let staffAmount: number;
+    let customerAmount: number;
+    let storageCapacity: number;
+    let containerCapacity: number;
+    let staffRestperiod: number;
+   
     // let kebap: string[] = ["flatbread", "vegan meat"];
     // let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
     // let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
@@ -21,6 +24,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement | null;
+
+    //let ingredients: Ingredient[] = [];
+    //let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
 
@@ -35,20 +41,39 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
 
+        //window.setInterval(update, 60);
+
     }
 
     function prepareGame(_event: Event): void {
 
         formData = new FormData(document.forms[0]);
+        console.log(formData);
 
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
         let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
 
         body.removeChild(form);
+
+        staffAmount = Number(formData.get("staffamount"));
+        console.log(staffAmount);
+        customerAmount = Number(formData.get("customeramount"));
+        storageCapacity = Number(formData.get("storagecapacity"));
+        containerCapacity = Number(formData.get("containercapacity"));
+        staffRestperiod = Number(formData.get("restperiod"));
+
+
+        
+
+        
         buildGamescreen();
-        console.log(formData);
+
+        
+        
+        
 
     }
+    
 
     function buildGamescreen(): void {
 
@@ -66,6 +91,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
+        //drawSalad();
+
+        
 
     }
 
@@ -101,6 +129,29 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
 
     }
+
+    /*function drawSalad(): void {
+        
+        let salad: Salad = new Salad(new Vector(0, 0), 20, 20);
+        ingredients.push(salad);
+        
+    }
+
+    function update(): void {
+    
+        console.log("Update");
+        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.putImageData(imgData, 0, 0);
+        for (let ingredient of ingredients) {
+            
+            ingredient.draw();
+
+            console.log(ingredient);
+
+        }
+
+
+    }*/
 
 }
 
