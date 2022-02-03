@@ -1,17 +1,16 @@
 "use strict";
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
-    class Customer extends EIA2_Endabgabe_Döner_Trainer.Person {
+    class Staff extends EIA2_Endabgabe_Döner_Trainer.Person {
         constructor(_position, _velocity, _type, _size) {
             super(_position);
         }
         draw() {
-            //happy customer
             //Body
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
             EIA2_Endabgabe_Döner_Trainer.crc2.translate(this.position.x, this.position.y);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 50, 0, 2 * Math.PI);
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "lightblue";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#CD5C5C";
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Head
@@ -22,7 +21,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Hair
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "brown";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FFEFd5";
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
@@ -66,12 +65,12 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         }
         mad() {
-            // mad customer
+            //mad staff
             //Body
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
             EIA2_Endabgabe_Döner_Trainer.crc2.translate(this.position.x, this.position.y);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 50, 0, 2 * Math.PI);
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "lightblue";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#CD5C5C";
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Head
@@ -82,7 +81,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Hair
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "brown";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FFEFd5";
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
@@ -124,24 +123,24 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
         }
-        stressed() {
-            //stressed customer
+        sleep() {
+            //staff sleeping
             //Body
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
             EIA2_Endabgabe_Döner_Trainer.crc2.translate(this.position.x, this.position.y);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 50, 0, 2 * Math.PI);
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "lightblue";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#CD5C5C";
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Head
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FBF2EF";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#F6D8CE";
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -43, 30, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             //Hair
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "brown";
+            EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#8B4513";
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
@@ -155,8 +154,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             //Eyes
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
             EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "black";
-            EIA2_Endabgabe_Döner_Trainer.crc2.arc(125, -47, 2.5, 0, 2 * Math.PI);
-            EIA2_Endabgabe_Döner_Trainer.crc2.arc(138, -47, 2.5, 0, 2 * Math.PI);
+            EIA2_Endabgabe_Döner_Trainer.crc2.arc(125, -47, 3, 0, 1 * Math.PI);
+            EIA2_Endabgabe_Döner_Trainer.crc2.arc(138, -47, 3, 0, 1 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             //Mouth
@@ -190,15 +189,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         }
         move() {
         }
-        talk() {
-            let kebap = ["flatbread", "vegan meat", "salad", "red cabbage"];
-            let lahmacun = ["flatbread", "vegan mincemeat", "tomatosauce"];
-            let yufka = ["thin flatbread", "vegan meat", "salad", "herb"];
-            let toppings = ["corn", "tomatoes", "onions"];
-            let sauces = ["garlic sauce", "hot sauce", "yoghurt sauce"];
-            let words = ["with", "without"];
-        }
     }
-    EIA2_Endabgabe_Döner_Trainer.Customer = Customer;
+    EIA2_Endabgabe_Döner_Trainer.Staff = Staff;
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
-//# sourceMappingURL=Customer.js.map
+//# sourceMappingURL=Staff.js.map

@@ -43,7 +43,7 @@ canvas {
 
 footer {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 650px;
 }
 
 #time {
@@ -55,4 +55,47 @@ footer {
     position: absolute;
     margin-top: -90px;
     margin-left: 45%;
+    margin-top: -800px;
+}
+
+#storage {
+    width: 200px;
+    height: 200px;
+    background-color: lightgrey;
+    margin-top: -800px;
+    margin-left: 250px;
+    border: lightblue dotted;
+}
+
+#storage p {
+    color: white;
+    padding: 5px;
+}
+
+#containerstorage {
+    background-color: lightgrey;
+    width: 200px;
+    height: 200px;
+    margin-left: 470px;
+    margin-top: -207px;
+    border: lightblue dotted;
+}
+
+#containerstorage p {
+    color: white;
+    padding: 5px;
+}
+
+#order {
+    background-color: lightgrey;
+    width: 200px;
+    height: 200px;
+    margin-top: 370px;
+    margin-left: 250px;
+    border: lightblue dotted;
+}
+
+#order p {
+    color: white;
+    padding: 5px;
 }

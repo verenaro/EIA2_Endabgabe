@@ -14,6 +14,9 @@ var EIA2_Endabgabe_Döner_Trainer;
         startButton.addEventListener("click", prepareGame);
         document.getElementById("gamefield").hidden = true;
         document.getElementById("time").hidden = true;
+        document.getElementById("storage").hidden = true;
+        document.getElementById("containerstorage").hidden = true;
+        document.getElementById("order").hidden = true;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
@@ -26,13 +29,18 @@ var EIA2_Endabgabe_Döner_Trainer;
     function buildGamescreen() {
         document.getElementById("gamefield").hidden = false;
         document.getElementById("time").hidden = false;
+        document.getElementById("storage").hidden = false;
+        document.getElementById("containerstorage").hidden = false;
+        document.getElementById("order").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
-        drawCustomer(new EIA2_Endabgabe_Döner_Trainer.Vector(400, 300));
         drawSalad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470));
+        drawTomato(new EIA2_Endabgabe_Döner_Trainer.Vector(100, 0));
+        drawLahmacun(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
+        drawCorn(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
     }
     function drawCounter(_position) {
         //draw counter
@@ -58,68 +66,6 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
     }
-    function drawCustomer(_position) {
-        //Body
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 50, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "lightblue";
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        //Head
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FBF2EF";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -43, 30, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        //Hair
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "brown";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        //Eyes
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "black";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(125, -47, 2.5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(138, -47, 2.5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        //Mouth
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        //zu 10,10 gehen
-        EIA2_Endabgabe_Döner_Trainer.crc2.moveTo(123, -30);
-        //bis 200,10 zeichnen
-        EIA2_Endabgabe_Döner_Trainer.crc2.lineTo(140, -30);
-        //Pfad schließen
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        //Linie Zeichnen
-        EIA2_Endabgabe_Döner_Trainer.crc2.stroke();
-        //Hands
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#FBF2EF";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(168, 15, 7, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(93, 15, 7, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        //Feet
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "grey";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(150, 60, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(110, 60, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.restore();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-    }
     function drawSalad(_position) {
         EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
@@ -134,6 +80,68 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+    }
+    function drawTomato(_position) {
+        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x - 170, _position.y - 230);
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "red";
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.save();
+        EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+        //Tomatoes Cuttingboard
+        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x + 70, _position.y + 230);
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "red";
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+    }
+    function drawLahmacun(_position) {
+        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x - 410, _position.y - 40);
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 45, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#bfa290";
+        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+        //Hackfleisch
+        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y + 100);
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#61380B";
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+    }
+    function drawCorn(_position) {
+        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "yellow";
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 5, 0, 2 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 5, 0, 2 * Math.PI);
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map
