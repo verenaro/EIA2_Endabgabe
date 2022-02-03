@@ -8,7 +8,17 @@ Quellen: Zusammenarbeit mit Neslisah Koc
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     let formData;
-    let ingredient = [];
+    //let gameStart: boolean = false;
+    //let gameTimer: number;
+    //let countDown: number;
+    //let time: HTMLDivElement;
+    let staffAmount;
+    let customerAmount;
+    let storageCapacity;
+    let containerCapacity;
+    let staffRestperiod;
+    let ingredients = [];
+    let imgData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         let startButton = document.querySelector("#startButton");
@@ -21,11 +31,18 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
+        console.log(formData);
         let form = document.querySelector("form");
         let body = document.querySelector("body");
         body.removeChild(form);
+        staffAmount = Number(formData.get("staffamount"));
+        customerAmount = Number(formData.get("customeramount"));
+        storageCapacity = Number(formData.get("storagecapacity"));
+        containerCapacity = Number(formData.get("containercapacity"));
+        staffRestperiod = Number(formData.get("restperiod"));
         buildGamescreen();
-        console.log(formData);
+        imgData = EIA2_Endabgabe_Döner_Trainer.crc2.getImageData(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
+        console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
     }
     function buildGamescreen() {
         document.getElementById("gamefield").hidden = false;
@@ -39,6 +56,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
         drawSalad();
+        window.setInterval(update, 60);
     }
     function drawCounter(_position) {
         //draw counter
@@ -48,6 +66,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function drawCuttingboard(_position) {
         //draw cuttingboard
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#8B4513";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y, 200, 100);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#B9773A";
@@ -57,6 +76,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#C0C0C0";
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
         EIA2_Endabgabe_Döner_Trainer.crc2.fill();
+        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
     }
     function drawContainer(_position) {
         //draw container
@@ -70,8 +90,15 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function drawSalad() {
         let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), 20, 20);
-        ingredient.push(salad);
-        ingredient.draw();
+        ingredients.push(salad);
+    }
+    function update() {
+        EIA2_Endabgabe_Döner_Trainer.crc2.clearRect(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
+        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
+        for (let ingredient of ingredients) {
+            ingredient.draw();
+            console.log(ingredients);
+        }
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

@@ -41,7 +41,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
 
-        //window.setInterval(update, 60);
+        
 
     }
 
@@ -67,7 +67,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         buildGamescreen();
         imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
-        console.log(staffAmount);
+        console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
 
 
 
@@ -92,7 +92,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawContainer(new Vector(1100, 370));
         drawSalad();
 
-        window.setInterval(update, 30);
+        window.setInterval(update, 60);
+
+       
 
 
 
@@ -108,6 +110,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function drawCuttingboard(_position: Vector): void {
         //draw cuttingboard
+        crc2.beginPath();
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_position.x, _position.y, 200, 100);
         crc2.fillStyle = "#B9773A";
@@ -117,6 +120,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.fillStyle = "#C0C0C0";
         crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
         crc2.fill();
+        crc2.closePath();
     }
 
     function drawContainer(_position: Vector): void {
@@ -140,7 +144,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function update(): void {
 
-        console.log("Update");
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
         for (let ingredient of ingredients) {

@@ -2,8 +2,8 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Cabbage extends EIA2_Endabgabe_Döner_Trainer.Ingredient {
-        constructor(_position, _amount, _containeramount, _type, _size) {
-            super(_position, _amount, _containeramount, _type, _size);
+        constructor(_position, _amount, _containeramount) {
+            super(_position, _amount, _containeramount);
         }
         draw() {
             EIA2_Endabgabe_Döner_Trainer.crc2.translate(this.position.x, this.position.y);
