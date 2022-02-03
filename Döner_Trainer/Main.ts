@@ -16,7 +16,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let storageCapacity: number;
     let containerCapacity: number;
     let staffRestperiod: number;
-   
+
     // let kebap: string[] = ["flatbread", "vegan meat"];
     // let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
     // let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
@@ -25,8 +25,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement | null;
 
-    //let ingredients: Ingredient[] = [];
-    //let imgData: ImageData;
+    let ingredients: Ingredient[] = [];
+    let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
 
@@ -62,16 +62,17 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         staffRestperiod = Number(formData.get("restperiod"));
 
 
-        
 
-        
+
+
         buildGamescreen();
+        imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount);
-      
+
 
 
     }
-    
+
 
     function buildGamescreen(): void {
 
@@ -89,9 +90,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
-        //drawSalad();
+        drawSalad();
 
-        
+        window.setInterval(update, 30);
+
+
 
     }
 
@@ -128,28 +131,28 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
-    /*function drawSalad(): void {
-        
+    function drawSalad(): void {
+
         let salad: Salad = new Salad(new Vector(0, 0), 20, 20);
         ingredients.push(salad);
-        
+
     }
 
     function update(): void {
-    
+
         console.log("Update");
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
         for (let ingredient of ingredients) {
-            
+
             ingredient.draw();
 
-            console.log(ingredient);
+            console.log(ingredients);
 
         }
 
 
-    }*/
+    }
 
 }
 
