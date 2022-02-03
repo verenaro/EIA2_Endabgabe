@@ -37,10 +37,6 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
-        drawSalad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470));
-        drawTomato(new EIA2_Endabgabe_Döner_Trainer.Vector(100, 0));
-        drawLahmacun(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
-        drawCorn(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
     }
     function drawCounter(_position) {
         //draw counter
@@ -52,9 +48,13 @@ var EIA2_Endabgabe_Döner_Trainer;
         //draw cuttingboard
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#8B4513";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y, 200, 100);
-        EIA2_Endabgabe_Döner_Trainer.crc2.save();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#B9773A";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x + 25, _position.y + 9, 150, 80);
+        //draw Knife
+        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#C0C0C0";
+        EIA2_Endabgabe_Döner_Trainer.crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
+        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
     }
     function drawContainer(_position) {
         //draw container
@@ -65,83 +65,6 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
-    }
-    function drawSalad(_position) {
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "green";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-    }
-    function drawTomato(_position) {
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x - 170, _position.y - 230);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "red";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.save();
-        EIA2_Endabgabe_Döner_Trainer.crc2.restore();
-        //Tomatoes Cuttingboard
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x + 70, _position.y + 230);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "red";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-    }
-    function drawLahmacun(_position) {
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x - 410, _position.y - 40);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 45, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#bfa290";
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-        //Hackfleisch
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y + 100);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#61380B";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-        EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-    }
-    function drawCorn(_position) {
-        EIA2_Endabgabe_Döner_Trainer.crc2.translate(_position.x, _position.y);
-        EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-        EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "yellow";
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(140, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(122, -69, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(132, -79, 5, 0, 2 * Math.PI);
-        EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -79, 5, 0, 2 * Math.PI);
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

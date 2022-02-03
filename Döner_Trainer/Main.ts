@@ -66,11 +66,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
-        drawSalad(new Vector(800, 470));
-        drawTomato(new Vector(100, 0));
-        drawLahmacun(new Vector(0, 0));
-        drawCorn(new Vector(0, 0));
-        
 
     }
 
@@ -79,15 +74,20 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.beginPath();
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_position.x, _position.y, 800, 150);
+
     }
 
     function drawCuttingboard(_position: Vector): void {
         //draw cuttingboard
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_position.x, _position.y, 200, 100);
-        crc2.save();
         crc2.fillStyle = "#B9773A";
         crc2.fillRect(_position.x + 25, _position.y + 9, 150, 80);
+        //draw Knife
+        crc2.beginPath();
+        crc2.fillStyle = "#C0C0C0";
+        crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
+        crc2.fill();
     }
 
     function drawContainer(_position: Vector): void {
@@ -101,93 +101,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
 
     }
-
-
-    function drawSalad(_position: Vector): void {
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.fillStyle = "green";
-        crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        crc2.fill();
-    }
-    function drawTomato(_position: Vector): void {
-        crc2.translate(_position.x - 170, _position.y - 230);
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.closePath();
-        crc2.save();
-        crc2.restore();
-        //Tomatoes Cuttingboard
-        crc2.translate(_position.x + 70, _position.y + 230);
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.arc(132, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(154, -68, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 10, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(122, -79, 10, 0, 2 * Math.PI);
-        crc2.arc(111, -75, 10, 0, 2 * Math.PI);
-        crc2.arc(114, -65, 10, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.closePath();
-
-    }
-
-    function drawLahmacun(_position: Vector): void {
-        crc2.translate(_position.x - 410, _position.y - 40);
-        crc2.beginPath();
-        crc2.arc(130, 19, 45, 0, 2 * Math.PI);
-        crc2.fillStyle = "#bfa290";
-        crc2.fill();
-        crc2.closePath();
-        //Hackfleisch
-        crc2.translate(_position.x, _position.y + 100);
-        crc2.beginPath();
-        crc2.fillStyle = "#61380B";
-        crc2.arc(132, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 5, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 5, 0, 2 * Math.PI);
-
-        crc2.fill();
-        crc2.closePath();
-    }
-
-    function drawCorn(_position: Vector): void {
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.fillStyle = "yellow";
-        crc2.arc(132, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(140, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(122, -69, 5, 0, 2 * Math.PI);
-        crc2.arc(132, -79, 5, 0, 2 * Math.PI);
-        crc2.arc(143, -79, 5, 0, 2 * Math.PI);
-    }
-    
-
-
-
 
 }
 
