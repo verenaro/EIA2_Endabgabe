@@ -56,7 +56,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         body.removeChild(form);
 
         staffAmount = Number(formData.get("staffamount"));
-        console.log(staffAmount);
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
@@ -67,6 +66,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         
         buildGamescreen();
+        console.log(staffAmount);
 
         
         
