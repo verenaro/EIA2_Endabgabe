@@ -92,7 +92,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawContainer(new Vector(1100, 370));
         drawSalad();
 
-        window.setInterval(update, 60);
+        window.setInterval(update, 20);
 
        
 
@@ -140,6 +140,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let salad: Salad = new Salad(new Vector(0, 0), 20, 20);
         ingredients.push(salad);
 
+        console.log(ingredients);
+
     }
 
     function update(): void {
@@ -150,7 +152,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
             ingredient.draw();
 
-            console.log(ingredients);
+           
 
         }
 
