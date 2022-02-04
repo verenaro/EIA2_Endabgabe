@@ -41,7 +41,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
 
-        
+
 
     }
 
@@ -92,9 +92,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawContainer(new Vector(1100, 370));
         drawSalad();
 
-        window.setInterval(update, 20);
+        //window.setInterval(update, 20);
 
-       
+
 
 
 
@@ -137,27 +137,33 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function drawSalad(): void {
 
-        let salad: Salad = new Salad(new Vector(0, 0), 20, 20);
+        let salad: Salad = new Salad(new Vector(200, 400));
         ingredients.push(salad);
+        //crc2.putImageData(imgData, 0, 0);
+        for (let ingredient of ingredients) {
+
+            ingredient.draw();
+        }
+
 
         console.log(ingredients);
 
     }
 
-    function update(): void {
+    /*function update(): void {
 
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        crc2.putImageData(imgData, 0, 0);
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
         for (let ingredient of ingredients) {
 
             ingredient.draw();
 
-           
+
 
         }
 
 
-    }
+    }*/
 
 }
 

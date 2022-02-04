@@ -5,14 +5,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         containeramount: number;
        
 
-        constructor(_position: Vector, _amount: number, _containeramount: number) {
+        constructor(_position: Vector) {
             if (_position)
                 this.position = _position;
             else
                 this.position = new Vector(0, 0);
 
-            this.amount = _amount;
-            this.containeramount = _containeramount;
+            
            
 
         }

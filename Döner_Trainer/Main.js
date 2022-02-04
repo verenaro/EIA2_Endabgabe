@@ -56,7 +56,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
         drawSalad();
-        window.setInterval(update, 20);
+        //window.setInterval(update, 20);
     }
     function drawCounter(_position) {
         //draw counter
@@ -89,16 +89,27 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
     }
     function drawSalad() {
-        let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), 20, 20);
+        let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(200, 400));
         ingredients.push(salad);
-        console.log(ingredients);
-    }
-    function update() {
-        EIA2_Endabgabe_Döner_Trainer.crc2.clearRect(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
-        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
+        //crc2.putImageData(imgData, 0, 0);
         for (let ingredient of ingredients) {
             ingredient.draw();
         }
+        console.log(ingredients);
     }
+    /*function update(): void {
+
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
+        for (let ingredient of ingredients) {
+
+            ingredient.draw();
+
+
+
+        }
+
+
+    }*/
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

@@ -5,13 +5,11 @@ var EIA2_Endabgabe_Döner_Trainer;
         position;
         amount;
         containeramount;
-        constructor(_position, _amount, _containeramount) {
+        constructor(_position) {
             if (_position)
                 this.position = _position;
             else
                 this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
-            this.amount = _amount;
-            this.containeramount = _containeramount;
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Ingredient = Ingredient;
