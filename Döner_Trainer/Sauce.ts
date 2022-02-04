@@ -1,8 +1,8 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Sauce extends Ingredient {
 
-        constructor(_position: Vector, _amount: number, _containeramount: number) {
-            super(_position, _amount, _containeramount);
+        constructor(_position: Vector) {
+            super(_position);
         }
 
         draw(): void {

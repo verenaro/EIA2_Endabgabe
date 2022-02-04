@@ -2,8 +2,8 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Yufka extends EIA2_Endabgabe_Döner_Trainer.Ingredient {
-        constructor(_position, _amount, _containeramount, _type, _size) {
-            super(_position, _amount, _containeramount);
+        constructor(_position) {
+            super(_position);
         }
         draw() {
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();

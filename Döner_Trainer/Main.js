@@ -89,7 +89,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
     }
     function drawSalad() {
-        let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(200, 400));
+        let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470));
         ingredients.push(salad);
         //crc2.putImageData(imgData, 0, 0);
         for (let ingredient of ingredients) {
@@ -99,11 +99,9 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     /*function update(): void {
 
-        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        //crc2.putImageData(imgData, 0, 0);
-        for (let ingredient of ingredients) {
-
-            ingredient.draw();
+        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.putImageData(imgData, 0, 0);
+        
 
 
 
