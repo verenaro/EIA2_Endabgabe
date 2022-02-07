@@ -21,8 +21,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.arc(114, -65, 10, 0, 1 * Math.PI);
             crc2.fill();
             crc2.closePath();
-            crc2.save();
             crc2.restore();
+            crc2.save();
         }
     }
 }

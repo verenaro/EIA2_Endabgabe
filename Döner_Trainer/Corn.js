@@ -16,8 +16,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(143, -1, 4, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+            EIA2_Endabgabe_Döner_Trainer.crc2.save();
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Corn = Corn;

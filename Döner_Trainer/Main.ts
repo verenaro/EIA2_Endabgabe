@@ -91,12 +91,18 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
         drawSalad();
+        drawTomato();
+        drawCorn();
+        drawOnion();
+        drawCabbage();
+        drawSauce();
+        drawKebap();
+        drawYufka();
+        drawLahmacun();
+
+
 
         window.setInterval(update, 20);
-
-
-
-
 
     }
 
@@ -135,31 +141,83 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
+    // draw Ingredients
+
     function drawSalad(): void {
 
         let salad: Salad = new Salad(new Vector(800, 470));
-        ingredients.push(salad);
-        //crc2.putImageData(imgData, 0, 0);
+        let salad2: Salad = new Salad(new Vector(-70, -230));
+        ingredients.push(salad, salad2);
+
+    }
+
+    function drawTomato(): void {
+
+        let tomato: Tomato = new Tomato(new Vector(3, -230));
+        let tomato2: Tomato = new Tomato(new Vector(100, 3));
+        ingredients.push(tomato, tomato2);
+
+    }
+
+    function drawCorn(): void {
+
+        let corn: Corn = new Corn(new Vector(200, -70));
+        ingredients.push(corn);
+
+    }
+
+    function drawOnion(): void {
+
+        let onion: Onion = new Onion(new Vector(100, 80));
+        let onion2: Onion = new Onion(new Vector(-70, -270));
+        ingredients.push(onion, onion2);
+
+    }
+
+    function drawCabbage(): void {
+
+        let cabbage: Cabbage = new Cabbage(new Vector(2, 80));
+        let cabbage2: Cabbage = new Cabbage(new Vector(5, -270));
+        ingredients.push(cabbage, cabbage2);
+
+    }
+
+    function drawSauce(): void {
+
+        let sauce: Sauce = new Sauce(new Vector(200, 7));
+        ingredients.push(sauce);
+
+    }
+
+    function drawKebap(): void {
+        let kebap: Kebap = new Kebap(new Vector(-320, -60));
+        ingredients.push(kebap);
+
+    }
+
+    function drawYufka(): void {
+        let yufka: Yufka = new Yufka(new Vector(-120, -30));
+        ingredients.push(yufka);
+
+    }
+
+    function drawLahmacun(): void {
+        let lahmacun: Lahmacun = new Lahmacun(new Vector(-100, -40));
+        ingredients.push(lahmacun);
+
         for (let ingredient of ingredients) {
 
             ingredient.draw();
+
         }
-
-
-        console.log(ingredients);
-
     }
+
+    // end draw Ingredients
 
     function update(): void {
 
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
-        
-
-
-
-        
-
 
     }
 

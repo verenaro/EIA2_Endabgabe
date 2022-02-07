@@ -19,8 +19,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(111, -75, 10, 0, 1 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 1 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
-            EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+            EIA2_Endabgabe_Döner_Trainer.crc2.save();
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Salad = Salad;

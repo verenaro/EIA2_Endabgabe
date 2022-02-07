@@ -13,6 +13,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#bfa290";
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
+            EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+            EIA2_Endabgabe_Döner_Trainer.crc2.save();
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Kebap = Kebap;

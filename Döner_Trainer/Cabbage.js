@@ -2,7 +2,7 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Cabbage extends EIA2_Endabgabe_Döner_Trainer.Ingredient {
-        constructor(_position, _amount, _containeramount) {
+        constructor(_position) {
             super(_position);
         }
         draw() {
@@ -20,8 +20,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(114, -65, 10, 0, 1 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
-            EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+            EIA2_Endabgabe_Döner_Trainer.crc2.save();
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Cabbage = Cabbage;

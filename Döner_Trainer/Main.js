@@ -56,7 +56,15 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
         drawSalad();
-        //window.setInterval(update, 20);
+        drawTomato();
+        drawCorn();
+        drawOnion();
+        drawCabbage();
+        drawSauce();
+        drawKebap();
+        drawYufka();
+        drawLahmacun();
+        window.setInterval(update, 20);
     }
     function drawCounter(_position) {
         //draw counter
@@ -88,26 +96,54 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
     }
+    // draw Ingredients
     function drawSalad() {
         let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470));
-        ingredients.push(salad);
-        //crc2.putImageData(imgData, 0, 0);
+        let salad2 = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(-70, -230));
+        ingredients.push(salad, salad2);
+    }
+    function drawTomato() {
+        let tomato = new EIA2_Endabgabe_Döner_Trainer.Tomato(new EIA2_Endabgabe_Döner_Trainer.Vector(3, -230));
+        let tomato2 = new EIA2_Endabgabe_Döner_Trainer.Tomato(new EIA2_Endabgabe_Döner_Trainer.Vector(100, 3));
+        ingredients.push(tomato, tomato2);
+    }
+    function drawCorn() {
+        let corn = new EIA2_Endabgabe_Döner_Trainer.Corn(new EIA2_Endabgabe_Döner_Trainer.Vector(200, -70));
+        ingredients.push(corn);
+    }
+    function drawOnion() {
+        let onion = new EIA2_Endabgabe_Döner_Trainer.Onion(new EIA2_Endabgabe_Döner_Trainer.Vector(100, 80));
+        let onion2 = new EIA2_Endabgabe_Döner_Trainer.Onion(new EIA2_Endabgabe_Döner_Trainer.Vector(-70, -270));
+        ingredients.push(onion, onion2);
+    }
+    function drawCabbage() {
+        let cabbage = new EIA2_Endabgabe_Döner_Trainer.Cabbage(new EIA2_Endabgabe_Döner_Trainer.Vector(2, 80));
+        let cabbage2 = new EIA2_Endabgabe_Döner_Trainer.Cabbage(new EIA2_Endabgabe_Döner_Trainer.Vector(5, -270));
+        ingredients.push(cabbage, cabbage2);
+    }
+    function drawSauce() {
+        let sauce = new EIA2_Endabgabe_Döner_Trainer.Sauce(new EIA2_Endabgabe_Döner_Trainer.Vector(200, 7));
+        ingredients.push(sauce);
+    }
+    function drawKebap() {
+        let kebap = new EIA2_Endabgabe_Döner_Trainer.Kebap(new EIA2_Endabgabe_Döner_Trainer.Vector(-320, -60));
+        ingredients.push(kebap);
+    }
+    function drawYufka() {
+        let yufka = new EIA2_Endabgabe_Döner_Trainer.Yufka(new EIA2_Endabgabe_Döner_Trainer.Vector(-120, -30));
+        ingredients.push(yufka);
+    }
+    function drawLahmacun() {
+        let lahmacun = new EIA2_Endabgabe_Döner_Trainer.Lahmacun(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, -40));
+        ingredients.push(lahmacun);
         for (let ingredient of ingredients) {
             ingredient.draw();
         }
-        console.log(ingredients);
     }
-    /*function update(): void {
-
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        crc2.putImageData(imgData, 0, 0);
-        
-
-
-
-        }
-
-
-    }*/
+    // end draw Ingredients
+    function update() {
+        EIA2_Endabgabe_Döner_Trainer.crc2.clearRect(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
+        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
+    }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map
