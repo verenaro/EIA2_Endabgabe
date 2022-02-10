@@ -17,6 +17,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let containerCapacity: number;
     let staffRestperiod: number;
 
+
     // let kebap: string[] = ["flatbread", "vegan meat"];
     // let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
     // let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
@@ -40,6 +41,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
+        document.getElementById("reorder").hidden = true;
+        document.getElementById("refill").hidden = true;
+        document.getElementById("finishorder").hidden = true;
 
 
 
@@ -81,6 +85,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
         document.getElementById("order").hidden = false;
+        document.getElementById("reorder").hidden = false;
+        document.getElementById("refill").hidden = false;
+        document.getElementById("finishorder").hidden = false;
 
 
 
@@ -99,6 +106,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawKebap();
         drawYufka();
         drawLahmacun();
+        showContainerCapacity();
 
 
 
@@ -145,64 +153,64 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function drawSalad(): void {
 
-        let salad: Salad = new Salad(new Vector(800, 470));
-        let salad2: Salad = new Salad(new Vector(-70, -230));
+        let salad: Salad = new Salad(new Vector(800, 470), storageCapacity, containerCapacity);
+        let salad2: Salad = new Salad(new Vector(-70, -230), storageCapacity, containerCapacity);
         ingredients.push(salad, salad2);
 
     }
 
     function drawTomato(): void {
 
-        let tomato: Tomato = new Tomato(new Vector(3, -230));
-        let tomato2: Tomato = new Tomato(new Vector(100, 3));
+        let tomato: Tomato = new Tomato(new Vector(3, -230), storageCapacity, containerCapacity);
+        let tomato2: Tomato = new Tomato(new Vector(100, 3), storageCapacity, containerCapacity);
         ingredients.push(tomato, tomato2);
 
     }
 
     function drawCorn(): void {
 
-        let corn: Corn = new Corn(new Vector(200, -70));
+        let corn: Corn = new Corn(new Vector(200, -70), storageCapacity, containerCapacity);
         ingredients.push(corn);
 
     }
 
     function drawOnion(): void {
 
-        let onion: Onion = new Onion(new Vector(100, 80));
-        let onion2: Onion = new Onion(new Vector(-70, -270));
+        let onion: Onion = new Onion(new Vector(100, 80), storageCapacity, containerCapacity);
+        let onion2: Onion = new Onion(new Vector(-70, -270), storageCapacity, containerCapacity);
         ingredients.push(onion, onion2);
 
     }
 
     function drawCabbage(): void {
 
-        let cabbage: Cabbage = new Cabbage(new Vector(2, 80));
-        let cabbage2: Cabbage = new Cabbage(new Vector(5, -270));
+        let cabbage: Cabbage = new Cabbage(new Vector(2, 80), storageCapacity, containerCapacity);
+        let cabbage2: Cabbage = new Cabbage(new Vector(5, -270), storageCapacity, containerCapacity);
         ingredients.push(cabbage, cabbage2);
 
     }
 
     function drawSauce(): void {
 
-        let sauce: Sauce = new Sauce(new Vector(200, 7));
+        let sauce: Sauce = new Sauce(new Vector(200, 7), storageCapacity, containerCapacity);
         ingredients.push(sauce);
 
     }
 
     function drawKebap(): void {
-        let kebap: Kebap = new Kebap(new Vector(-320, -60));
+        let kebap: Kebap = new Kebap(new Vector(-320, -60), storageCapacity, containerCapacity);
         ingredients.push(kebap);
 
     }
 
     function drawYufka(): void {
-        let yufka: Yufka = new Yufka(new Vector(-120, -30));
+        let yufka: Yufka = new Yufka(new Vector(-120, -30), storageCapacity, containerCapacity);
         ingredients.push(yufka);
 
     }
 
     function drawLahmacun(): void {
-        let lahmacun: Lahmacun = new Lahmacun(new Vector(-100, -40));
+        let lahmacun: Lahmacun = new Lahmacun(new Vector(-100, -40), storageCapacity, containerCapacity);
         ingredients.push(lahmacun);
 
         for (let ingredient of ingredients) {
@@ -219,6 +227,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
 
+    }
+    function showContainerCapacity(): void {
+        let storageDiv: HTMLElement = document.getElementById("storage");
+        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
+        let containerDiv: HTMLElement = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
     }
 
 }

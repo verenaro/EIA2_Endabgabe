@@ -1,8 +1,8 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Lahmacun extends Ingredient {
 
-        constructor(_position: Vector) {
-            super(_position);
+        constructor(_position: Vector, _amount: number, _containeramount: number) {
+            super(_position, _amount, _containeramount);
         }
 
         draw(): void {
