@@ -230,7 +230,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.putImageData(imgData, 0, 0);
 
 
-       
+
 
 
     }
@@ -243,12 +243,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function drawStaff(): void {
 
+        let x: number;
 
         for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(0, 0));
+            let staff: Staff = new Staff(new Vector(x - 100, 0));
 
-           
-            
+
+
             staffs.push(staff);
 
             for (let staff of staffs) {
@@ -257,9 +258,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             }
 
         }
-       
-        
-        
+
+
+
 
     }
 
