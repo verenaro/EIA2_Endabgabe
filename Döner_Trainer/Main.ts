@@ -27,6 +27,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     export let canvas: HTMLCanvasElement | null;
 
     let ingredients: Ingredient[] = [];
+    let staffs: Staff[] = [];
     let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
@@ -107,6 +108,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawYufka();
         drawLahmacun();
         showContainerCapacity();
+        drawStaff();
 
 
 
@@ -227,12 +229,29 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
 
+
+
     }
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
+    }
+
+    function drawStaff(): void {
+        formData = new FormData(document.forms[0]);
+        let staff: Staff = new Staff(new Vector(-200, -200), new Vector(0, 0), "staff1");
+        staffs.push(staff);
+        
+        staffAmount = Number(formData.get("staffamount"));
+    
+        for (let i: number = 0; i < staffs.length; i++) {
+            staff.draw();
+        }
+
+        
+
     }
 
 }

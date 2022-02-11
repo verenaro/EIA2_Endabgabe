@@ -1,7 +1,7 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Customer extends Person {
 
-        constructor(_position: Vector, _velocity: Vector, _type: string, _size: string) {
+        constructor(_position: Vector, _velocity: Vector, _type: string) {
             super(_position);
         }
 

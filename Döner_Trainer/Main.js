@@ -18,6 +18,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let containerCapacity;
     let staffRestperiod;
     let ingredients = [];
+    let staffs = [];
     let imgData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
@@ -71,6 +72,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawYufka();
         drawLahmacun();
         showContainerCapacity();
+        drawStaff();
         window.setInterval(update, 20);
     }
     function drawCounter(_position) {
@@ -157,6 +159,15 @@ var EIA2_Endabgabe_Döner_Trainer;
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
+    }
+    function drawStaff() {
+        formData = new FormData(document.forms[0]);
+        let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-200, -200), new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), "staff1");
+        staffs.push(staff);
+        staffAmount = Number(formData.get("staffamount"));
+        for (let i = 0; i < staffs.length; i++) {
+            staff.draw();
+        }
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

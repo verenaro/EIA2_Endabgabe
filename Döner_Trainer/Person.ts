@@ -4,7 +4,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         public position: Vector;
         public velocity: Vector;
-        public size: Vector;
         public type: string;
 
         constructor(_position: Vector) {

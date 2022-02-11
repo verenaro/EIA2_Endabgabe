@@ -4,7 +4,6 @@ var EIA2_Endabgabe_Döner_Trainer;
     class Person {
         position;
         velocity;
-        size;
         type;
         constructor(_position) {
             if (_position)

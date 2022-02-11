@@ -2,7 +2,7 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Customer extends EIA2_Endabgabe_Döner_Trainer.Person {
-        constructor(_position, _velocity, _type, _size) {
+        constructor(_position, _velocity, _type) {
             super(_position);
         }
         draw() {
