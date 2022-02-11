@@ -2,8 +2,12 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Staff extends EIA2_Endabgabe_Döner_Trainer.Person {
-        constructor(_position, _velocity, _type) {
+        constructor(_position) {
             super(_position);
+            if (_position)
+                this.position = _position;
+            else
+                this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
         }
         draw() {
             //Body
@@ -63,6 +67,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
             EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
+            EIA2_Endabgabe_Döner_Trainer.crc2.restore();
+            EIA2_Endabgabe_Döner_Trainer.crc2.save();
         }
         mad() {
             //mad staff

@@ -161,12 +161,13 @@ var EIA2_Endabgabe_Döner_Trainer;
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
     }
     function drawStaff() {
-        formData = new FormData(document.forms[0]);
-        let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-200, -200), new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), "staff1");
-        staffs.push(staff);
-        staffAmount = Number(formData.get("staffamount"));
-        for (let i = 0; i < staffs.length; i++) {
-            staff.draw();
+        for (let i = 0; i < staffAmount; i++) {
+            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
+            staffs.push(staff);
+            for (let staff of staffs) {
+                staff.draw();
+                console.log(staffs);
+            }
         }
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));

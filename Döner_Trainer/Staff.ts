@@ -1,8 +1,13 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Staff extends Person {
 
-        constructor(_position: Vector, _velocity: Vector, _type: string) {
+        constructor(_position: Vector) {
             super(_position);
+
+            if (_position)
+            this.position = _position;
+        else
+            this.position = new Vector(0, 0);
         }
 
         draw(): void {
@@ -63,6 +68,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.restore();
             crc2.closePath();
             crc2.beginPath();
+
+            crc2.restore();
+            crc2.save();
         }
         mad(): void {
             //mad staff
