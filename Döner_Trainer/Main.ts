@@ -309,7 +309,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
         for (let customer of customers) {
 
-            setTimeout(
+            setInterval(
                 function (): void {
                     customer.draw();
                 }, 2000);

@@ -200,7 +200,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             customers.push(customer);
         }
         for (let customer of customers) {
-            setTimeout(function () {
+            setInterval(function () {
                 customer.draw();
             }, 2000);
         }
