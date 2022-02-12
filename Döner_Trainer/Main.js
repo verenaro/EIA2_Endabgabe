@@ -20,12 +20,12 @@ var EIA2_Endabgabe_Döner_Trainer;
     let ingredients = [];
     let staffs = [];
     let customers = [];
-    let basis = ["Döner", "Yufka", "Lahmacun"];
+    let basis = ["Kebap", "Yufka", "Lahmacun"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
     let word = ["with", "without"];
     //let words: string[] = ["with", "without"];
-    let imgData;
+    //let imgData: ImageData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         let startButton = document.querySelector("#startButton");
@@ -59,7 +59,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         containerCapacity = Number(formData.get("containercapacity"));
         staffRestperiod = Number(formData.get("restperiod"));
         buildGamescreen();
-        imgData = EIA2_Endabgabe_Döner_Trainer.crc2.getImageData(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
+        //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
     }
     function buildGamescreen() {
@@ -175,8 +175,8 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     // end draw Ingredients
     function update() {
-        EIA2_Endabgabe_Döner_Trainer.crc2.clearRect(0, 0, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width, EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height);
-        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
     }
     function showContainerCapacity() {
         let storageDiv = document.getElementById("storage");
@@ -200,7 +200,9 @@ var EIA2_Endabgabe_Döner_Trainer;
             customers.push(customer);
         }
         for (let customer of customers) {
-            customer.draw();
+            setTimeout(function () {
+                customer.draw();
+            }, 2000);
         }
         console.log(staffs);
     }
@@ -209,7 +211,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         let object2 = Math.floor(Math.random() * topping.length);
         let object3 = Math.floor(Math.random() * sauce.length);
         let object4 = Math.floor(Math.random() * word.length);
-        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + " " + ". Thank you."];
+        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
         let orderDiv = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
     }

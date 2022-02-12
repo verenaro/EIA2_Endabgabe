@@ -30,13 +30,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
 
-    let basis: string[] = ["Döner", "Yufka", "Lahmacun"];
+    let basis: string[] = ["Kebap", "Yufka", "Lahmacun"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
     let word: string[] = ["with", "without"];
 
     //let words: string[] = ["with", "without"];
-    let imgData: ImageData;
+    //let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
 
@@ -91,7 +91,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
         buildGamescreen();
-        imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
 
 
@@ -257,8 +257,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function update(): void {
 
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        crc2.putImageData(imgData, 0, 0);
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
 
 
 
@@ -309,7 +309,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
         for (let customer of customers) {
 
-            customer.draw();
+            setTimeout(
+                function (): void {
+                    customer.draw();
+                }, 2000);
+            
         }
         console.log(staffs);
 
@@ -329,7 +333,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
 
-        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " +  word[object4] + " " + sauce[object3] + " " + ". Thank you." ];
+        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " +  word[object4] + " " + sauce[object3] + "." + " " + "Thank you." ];
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;

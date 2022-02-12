@@ -84,6 +84,8 @@
         margin-top: 340px;
         margin-left: 1100px;
         border: lightblue dotted;
+        color: white;
+        font-family: initial;
     }
     
     #order p {
