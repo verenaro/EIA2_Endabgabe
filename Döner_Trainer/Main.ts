@@ -29,8 +29,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
+
     let basis: string[] = ["Döner", "Yufka", "Lahmacun"];
     let topping: string[] = ["corn", "salad", "sauce", "red cabbage", "onion", "tomato"];
+
     //let words: string[] = ["with", "without"];
     let imgData: ImageData;
 
@@ -311,9 +313,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
-    
+
 
     function getOrder(): void {
+
 
 
         let object1: number = Math.floor(Math.random() * basis.length);
@@ -327,6 +330,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
+
+
 
 
 
