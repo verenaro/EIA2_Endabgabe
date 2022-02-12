@@ -29,7 +29,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
-    let basis: string[] = ["Döner", "Yufka", "Lahmacun", "anderes Brot", "anderes Brot", "anderes Brot"];
+    let basis: string[] = ["Döner", "Yufka", "Lahmacun"];
     let topping: string[] = ["corn", "salad", "sauce", "red cabbage", "onion", "tomato"];
     //let words: string[] = ["with", "without"];
     let imgData: ImageData;
@@ -311,22 +311,24 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
+    
+
     function getOrder(): void {
 
 
         let object1: number = Math.floor(Math.random() * basis.length);
         let object2: number = Math.floor(Math.random() * topping.length);
-       
+
 
         basis.splice(object1, 1);
         topping.splice(object2, 1);
 
-        let order: string[] = ["I would like one" + " " +  basis[object1] + " " + "with" + " " + topping[object2] + " "  + "Thank you."];
+        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "Thank you."];
 
         let orderDiv: HTMLElement = document.getElementById("order");
-        orderDiv.innerHTML = "order:" + "<br>" + "<br>" + order;
+        orderDiv.innerHTML = "order:" + "<br>" + order;
 
-      
+
 
     }
 

@@ -20,7 +20,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let ingredients = [];
     let staffs = [];
     let customers = [];
-    let basis = ["Döner", "Yufka", "Lahmacun", "anderes Brot", "anderes Brot", "anderes Brot"];
+    let basis = ["Döner", "Yufka", "Lahmacun"];
     let topping = ["corn", "salad", "sauce", "red cabbage", "onion", "tomato"];
     //let words: string[] = ["with", "without"];
     let imgData;
@@ -209,7 +209,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         topping.splice(object2, 1);
         let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "Thank you."];
         let orderDiv = document.getElementById("order");
-        orderDiv.innerHTML = "order:" + "<br>" + "<br>" + order;
+        orderDiv.innerHTML = "order:" + "<br>" + order;
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map
