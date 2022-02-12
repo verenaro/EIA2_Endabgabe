@@ -167,9 +167,9 @@ var EIA2_Endabgabe_Döner_Trainer;
             staffs.push(staff);
             for (let staff of staffs) {
                 staff.draw();
-                console.log(staffs);
             }
         }
+        console.log(staffs);
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

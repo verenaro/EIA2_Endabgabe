@@ -12,7 +12,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         draw() {
             //Body
             EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
-            //crc2.translate(this.position.x, this.position.y);
+            EIA2_Endabgabe_Döner_Trainer.crc2.translate(this.position.x, this.position.y);
             EIA2_Endabgabe_Döner_Trainer.crc2.arc(130, 19, 50, 0, 2 * Math.PI);
             EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#CD5C5C";
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();

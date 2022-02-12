@@ -252,10 +252,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
             for (let staff of staffs) {
                 staff.draw();
-                console.log(staffs);
             }
 
         }
+        console.log(staffs);
 
     }
 

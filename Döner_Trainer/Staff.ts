@@ -13,7 +13,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         draw(): void {
             //Body
             crc2.beginPath();
-            //crc2.translate(this.position.x, this.position.y);
+            crc2.translate(this.position.x, this.position.y);
             crc2.arc(130, 19, 50, 0, 2 * Math.PI);
             crc2.fillStyle = "#CD5C5C";
             crc2.fill();
@@ -69,7 +69,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
             crc2.restore();
             crc2.save();
-            
+
         }
         mad(): void {
             //mad staff
