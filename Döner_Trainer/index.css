@@ -1,128 +1,209 @@
-#settings {
-    background-color: whitesmoke;
-    text-align: center;
-    font-family: initial;
-    font-size: 25px;
-    color: darkslategrey;
-    visibility: visible;
-    width: 600px;
-    position: relative;
-    transform: translate(-50%);
-    left: 50%;
-}
-
-h1 {
-    color: lightsteelblue;
-    font-family: initial;
-    text-align: center;
-    font-size: 50px;
-}
-
-h2 {
-    color: slategray;
-    font-family: initial;
-    font-size: 40px;
-    text-align: center;
-}
-
-#startButton {
-    color: darkslategrey;
-    font-family: initial;
-    background-color: lightgray;
-    padding: 40px;
-    border: lightblue dotted;
-    font-size: 30px;
-}
-
-canvas {
-    border: 1px solid black;
-    position: relative;
-    transform: translate(-50%);
-    left: 50%;
-}
-
-footer {
-    text-align: center;
-    margin-top: 650px;
-}
-
-#storage {
-    width: 200px;
-    height: 200px;
-    background-color: lightgrey;
-    margin-top: -800px;
-    margin-left: 130px;
-    border: lightblue dotted;
-    color: white;
-    font-family: initial;
-}
-
-#containerstorage {
-    background-color: lightgrey;
-    width: 200px;
-    height: 200px;
-    margin-left: 370px;
-    margin-top: -206px;
-    border: lightblue dotted;
-    color: white;
-    font-family: initial;
-}
-
-#order {
-    background-color: lightgrey;
-    width: 200px;
-    height: 200px;
-    margin-top: 340px;
-    margin-left: 1100px;
-    border: lightblue dotted;
-}
-
-#order p {
-    color: white;
-    padding: 5px;
-}
-
-#reorder {
-    margin-left: 200px;
-    margin-top: 10px;
-    position: absolute;
-    color: lightslategray;
-    border-color: lightslategray;
-    font-family: initial;
-}
-
-#reorder:hover {
-    border: lightblue dotted;
-}
-
-#refill {
-    margin-left: 450px;
-    margin-top: 10px;
-    position: absolute;
-    color: lightslategray;
-    border-color: lightslategray;
-    font-family: initial;
-}
-
-#refill:hover {
-    border: lightblue dotted;
-}
-
-#finishorder {
-    margin-left: 1160px;
-    margin-top: 10px;
-    position: absolute;
-    color: lightslategray;
-    border-color: lightslategray;
-    font-family: initial;
-}
-
-#finishorder:hover {
-    border: lightblue dotted;
-}
-
-#cuttingboard {
-    margin-left: 990px;
-    margin-top: -535px;
-    position: absolute;
-}
+    @media screen and (max-width: 1000px) {
+        canvas {
+            orientation: landscape;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    #settings {
+        background-color: whitesmoke;
+        text-align: center;
+        font-family: initial;
+        font-size: 25px;
+        color: darkslategrey;
+        visibility: visible;
+        width: 600px;
+        position: relative;
+        transform: translate(-50%);
+        left: 50%;
+    }
+    
+    h1 {
+        color: lightsteelblue;
+        font-family: initial;
+        text-align: center;
+        font-size: 50px;
+    }
+    
+    h2 {
+        color: slategray;
+        font-family: initial;
+        font-size: 40px;
+        text-align: center;
+    }
+    
+    #startButton {
+        color: darkslategrey;
+        font-family: initial;
+        background-color: lightgray;
+        padding: 40px;
+        border: lightblue dotted;
+        font-size: 30px;
+    }
+    
+    canvas {
+        border: 1px solid black;
+        position: relative;
+        transform: translate(-50%);
+        left: 50%;
+    }
+    
+    footer {
+        text-align: center;
+        margin-top: 650px;
+    }
+    
+    #storage {
+        width: 200px;
+        height: 200px;
+        background-color: lightgrey;
+        margin-top: -800px;
+        margin-left: 130px;
+        border: lightblue dotted;
+        color: white;
+        font-family: initial;
+    }
+    
+    #containerstorage {
+        background-color: lightgrey;
+        width: 200px;
+        height: 200px;
+        margin-left: 370px;
+        margin-top: -206px;
+        border: lightblue dotted;
+        color: white;
+        font-family: initial;
+    }
+    
+    #order {
+        background-color: lightgrey;
+        width: 200px;
+        height: 200px;
+        margin-top: 340px;
+        margin-left: 1100px;
+        border: lightblue dotted;
+    }
+    
+    #order p {
+        color: white;
+        padding: 5px;
+    }
+    
+    #reorder {
+        margin-left: 200px;
+        margin-top: 10px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #refill {
+        margin-left: 450px;
+        margin-top: 10px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #finishorder {
+        margin-left: 1160px;
+        margin-top: 10px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #cuttingboard {
+        margin-left: 970px;
+        margin-top: -685px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #kebap {
+        margin-left: 695px;
+        margin-top: -270px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #yufka {
+        margin-left: 810px;
+        margin-top: -270px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #lahmacun {
+        margin-left: 910px;
+        margin-top: -270px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #salad {
+        margin-left: 1022px;
+        margin-top: -340px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #tomato {
+        margin-left: 1120px;
+        margin-top: -340px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #corn {
+        margin-left: 1225px;
+        margin-top: -340px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #cabbage {
+        margin-left: 1015px;
+        margin-top: -258px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #onion {
+        margin-left: 1120px;
+        margin-top: -258px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }
+    
+    #sauce {
+        margin-left: 1220px;
+        margin-top: -258px;
+        position: absolute;
+        color: lightslategray;
+        border-color: lightslategray;
+        font-family: initial;
+    }

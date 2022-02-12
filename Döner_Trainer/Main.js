@@ -32,6 +32,16 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("reorder").hidden = true;
         document.getElementById("refill").hidden = true;
         document.getElementById("finishorder").hidden = true;
+        document.getElementById("kebap").hidden = true;
+        document.getElementById("yufka").hidden = true;
+        document.getElementById("lahmacun").hidden = true;
+        document.getElementById("salad").hidden = true;
+        document.getElementById("tomato").hidden = true;
+        document.getElementById("onion").hidden = true;
+        document.getElementById("corn").hidden = true;
+        document.getElementById("cabbage").hidden = true;
+        document.getElementById("sauce").hidden = true;
+        document.getElementById("cuttingboard").hidden = true;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
@@ -56,6 +66,16 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("reorder").hidden = false;
         document.getElementById("refill").hidden = false;
         document.getElementById("finishorder").hidden = false;
+        document.getElementById("kebap").hidden = false;
+        document.getElementById("yufka").hidden = false;
+        document.getElementById("lahmacun").hidden = false;
+        document.getElementById("salad").hidden = false;
+        document.getElementById("tomato").hidden = false;
+        document.getElementById("onion").hidden = false;
+        document.getElementById("corn").hidden = false;
+        document.getElementById("cabbage").hidden = false;
+        document.getElementById("sauce").hidden = false;
+        document.getElementById("cuttingboard").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
@@ -143,7 +163,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         ingredients.push(yufka);
     }
     function drawLahmacun() {
-        let lahmacun = new EIA2_Endabgabe_Döner_Trainer.Lahmacun(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, -40), storageCapacity, containerCapacity);
+        let lahmacun = new EIA2_Endabgabe_Döner_Trainer.Lahmacun(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, -55), storageCapacity, containerCapacity);
         ingredients.push(lahmacun);
         for (let ingredient of ingredients) {
             ingredient.draw();
