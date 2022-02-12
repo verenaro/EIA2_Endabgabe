@@ -100,15 +100,6 @@
         font-family: initial;
     }
     
-    #refill {
-        margin-left: 450px;
-        margin-top: 10px;
-        position: absolute;
-        color: lightslategray;
-        border-color: lightslategray;
-        font-family: initial;
-    }
-    
     #finishorder {
         margin-left: 1160px;
         margin-top: 10px;

@@ -43,7 +43,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
         document.getElementById("reorder").hidden = true;
-        document.getElementById("refill").hidden = true;
         document.getElementById("finishorder").hidden = true;
         document.getElementById("kebap").hidden = true;
         document.getElementById("yufka").hidden = true;
@@ -96,7 +95,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("containerstorage").hidden = false;
         document.getElementById("order").hidden = false;
         document.getElementById("reorder").hidden = false;
-        document.getElementById("refill").hidden = false;
         document.getElementById("finishorder").hidden = false;
         document.getElementById("kebap").hidden = false;
         document.getElementById("yufka").hidden = false;
