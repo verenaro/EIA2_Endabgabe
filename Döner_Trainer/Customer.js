@@ -4,6 +4,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     class Customer extends EIA2_Endabgabe_Döner_Trainer.Person {
         constructor(_position) {
             super(_position);
+            this.velocity = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
         }
         draw() {
             //happy customer
@@ -184,7 +185,18 @@ var EIA2_Endabgabe_Döner_Trainer;
         }
         mood() {
         }
-        move() {
+        move(_timeslice) {
+            let offset = this.velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
+            if (this.position.x < 0)
+                this.position.x += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
+            if (this.position.x > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width)
+                this.position.x -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
+            if (this.position.y > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height)
+                this.position.y -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
         }
         talk() {
             let kebap = ["flatbread", "vegan meat", "salad", "red cabbage"];

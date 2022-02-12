@@ -11,6 +11,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             else
                 this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
             this.velocity = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
+            this.velocity.random(100, 200);
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Person = Person;

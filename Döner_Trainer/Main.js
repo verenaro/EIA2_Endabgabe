@@ -20,6 +20,9 @@ var EIA2_Endabgabe_Döner_Trainer;
     let ingredients = [];
     let staffs = [];
     let customers = [];
+    let basis = ["Döner", "Yufka", "Lahmacun", "anderes Brot", "anderes Brot", "anderes Brot"];
+    let topping = ["corn", "salad", "sauce", "red cabbage", "onion", "tomato"];
+    //let words: string[] = ["with", "without"];
     let imgData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
@@ -91,6 +94,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         showContainerCapacity();
         drawStaff();
         drawCustomer();
+        getOrder();
         window.setInterval(update, 20);
     }
     function drawCounter(_position) {
@@ -197,6 +201,15 @@ var EIA2_Endabgabe_Döner_Trainer;
             customer.draw();
         }
         console.log(staffs);
+    }
+    function getOrder() {
+        let object1 = Math.floor(Math.random() * basis.length);
+        let object2 = Math.floor(Math.random() * topping.length);
+        basis.splice(object1, 1);
+        topping.splice(object2, 1);
+        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "Thank you."];
+        let orderDiv = document.getElementById("order");
+        orderDiv.innerHTML = "order:" + "<br>" + "<br>" + order;
     }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

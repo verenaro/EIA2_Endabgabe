@@ -29,6 +29,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
+    let basis: string[] = ["Döner", "Yufka", "Lahmacun", "anderes Brot", "anderes Brot", "anderes Brot"];
+    let topping: string[] = ["corn", "salad", "sauce", "red cabbage", "onion", "tomato"];
+    //let words: string[] = ["with", "without"];
     let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
@@ -54,6 +57,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("cabbage").hidden = true;
         document.getElementById("sauce").hidden = true;
         document.getElementById("cuttingboard").hidden = true;
+
+
+
+
 
 
 
@@ -127,6 +134,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
         drawStaff();
         drawCustomer();
+        getOrder();
 
 
 
@@ -248,6 +256,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
 
+
+
     }
 
     function showContainerCapacity(): void {
@@ -260,14 +270,14 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function drawStaff(): void {
 
 
-    
+
         for (let i: number = 0; i < staffAmount; i++) {
             let staff: Staff = new Staff(new Vector(-100, 0));
 
 
             staffs.push(staff);
 
-           
+
 
         }
         for (let staff of staffs) {
@@ -275,26 +285,54 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
         console.log(staffs);
 
+
+
     }
+
+
     function drawCustomer(): void {
 
 
-    
+
         for (let i: number = 0; i < customerAmount; i++) {
+
             let customer: Customer = new Customer(new Vector(-100, 0));
 
 
             customers.push(customer);
 
-           
 
         }
         for (let customer of customers) {
+
             customer.draw();
         }
         console.log(staffs);
 
     }
+
+    function getOrder(): void {
+
+
+        let object1: number = Math.floor(Math.random() * basis.length);
+        let object2: number = Math.floor(Math.random() * topping.length);
+       
+
+        basis.splice(object1, 1);
+        topping.splice(object2, 1);
+
+        let order: string[] = ["I would like one" + " " +  basis[object1] + " " + "with" + " " + topping[object2] + " "  + "Thank you."];
+
+        let orderDiv: HTMLElement = document.getElementById("order");
+        orderDiv.innerHTML = "order:" + "<br>" + "<br>" + order;
+
+      
+
+    }
+
+
+
+
 
 }
 

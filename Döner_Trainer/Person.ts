@@ -13,8 +13,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 this.position = new Vector(0, 0);
 
             this.velocity = new Vector(0, 0);
+            this.velocity.random(100, 200);
         }
-        public abstract move(): void;
+        public abstract move(_timeslice: number): void;
 
         public abstract draw(): void;
 
