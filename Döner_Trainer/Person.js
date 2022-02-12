@@ -7,7 +7,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         type;
         constructor(_position) {
             if (_position)
-                this.position = _position;
+                this.position = _position.copy();
             else
                 this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
             this.velocity = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);

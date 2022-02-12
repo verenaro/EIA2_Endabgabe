@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
     <script src="Vector.js"></script>
     <script src="Person.js"></script>
+    <script src="Staff.js"></script>
     <script src="Customer.js"></script>
     <script src="Ingredient.js"></script>
     <script src="Salad.js"></script>
@@ -19,7 +20,6 @@
     <script src="Kebap.js"></script>
     <script src="Yufka.js"></script>
     <script src="Lahmacun.js"></script>
-    <script src="Staff.js"></script>
     <script src="Main.js"></script>
 </head>
 
@@ -29,14 +29,9 @@
     <form id="settings">
         <h2 id="title2">Settings</h2>
         <fieldset>
-            <legend>staff amount</legend>
-            <label for="staffamount" value="1">1</label>
-            <label for="1"></label>
-            <input type="radio" name="staffamount" value="1">
-            <label for="staffamount" value="2">2</label>
-            <input type="radio" name="staffamount" value="2">
-            <label for="staffamount" value="3">3</label>
-            <input type="radio" name="staffamount" value="3"><br>
+            <label for="staffamount">staff amount</label>
+            <input type="number" name="staffamount" step="1" min="2" max="4" value="2">
+
         </fieldset>
         <fieldset>
             <legend>customer amount per 5 min</legend>
@@ -85,6 +80,11 @@
         <p>order</p>
     </div>
     <button id="finishorder">finish order</button>
+    <button id="cuttingboard">cuttingboard</button>
+    <button id="kebap">Kebap</button>
+    <button id="yufka">Yufka</button>
+    <button id="lahmacun">Lahmacun</button>
+
 
 
 

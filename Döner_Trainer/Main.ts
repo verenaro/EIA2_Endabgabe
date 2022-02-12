@@ -109,7 +109,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
-        
+
 
 
 
@@ -241,11 +241,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function drawStaff(): void {
 
-        let x: number;
 
+    
         for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(x - 100, 0));
-
+            let staff: Staff = new Staff(new Vector(-200, 0));
 
 
             staffs.push(staff);

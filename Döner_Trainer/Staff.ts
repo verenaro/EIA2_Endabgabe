@@ -13,17 +13,19 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         draw(): void {
             //Body
             crc2.beginPath();
+            crc2.save();
             crc2.translate(this.position.x, this.position.y);
             crc2.arc(130, 19, 50, 0, 2 * Math.PI);
             crc2.fillStyle = "#CD5C5C";
             crc2.fill();
-            crc2.closePath();
+            //crc2.closePath();
             //Head
             crc2.beginPath();
+            crc2.save();
             crc2.fillStyle = "#FBF2EF";
             crc2.arc(132, -43, 30, 0, 2 * Math.PI);
             crc2.fill();
-            crc2.closePath();
+            //crc2.closePath();
             //Hair
             crc2.beginPath();
             crc2.fillStyle = "#FFEFd5";
@@ -42,7 +44,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.fillStyle = "black";
             crc2.arc(125, -47, 2.5, 0, 2 * Math.PI);
             crc2.arc(138, -47, 2.5, 0, 2 * Math.PI);
-            crc2.closePath();
+            //crc2.closePath();
             crc2.fill();
             //Mouth
             crc2.beginPath();
@@ -56,19 +58,19 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.fillStyle = "#FBF2EF";
             crc2.arc(168, 15, 7, 0, 2 * Math.PI);
             crc2.arc(93, 15, 7, 0, 2 * Math.PI);
-            crc2.closePath();
+            //crc2.closePath();
             crc2.fill();
             //Feet
             crc2.beginPath();
             crc2.fillStyle = "grey";
             crc2.arc(150, 60, 10, 0, 2 * Math.PI);
             crc2.arc(110, 60, 10, 0, 2 * Math.PI);
+            
             crc2.closePath();
             crc2.fill();
-            crc2.closePath();
-
-            crc2.restore();
             crc2.save();
+            crc2.restore();
+            
 
         }
         mad(): void {
@@ -127,8 +129,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.arc(110, 60, 10, 0, 2 * Math.PI);
             crc2.closePath();
             crc2.fill();
-            crc2.restore();
+        
             crc2.closePath();
+            crc2.restore();
+            crc2.save();
         }
 
         sleep(): void {
@@ -191,6 +195,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.closePath();
             crc2.fill();
             crc2.closePath();
+            crc2.restore();
+            crc2.save();
         }
 
         mood(): void {

@@ -8,7 +8,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         constructor(_position: Vector) {
             if (_position)
-                this.position = _position;
+                this.position = _position.copy();
             else
                 this.position = new Vector(0, 0);
 

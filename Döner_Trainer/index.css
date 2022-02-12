@@ -132,3 +132,9 @@ footer {
 #finishorder:hover {
     border: lightblue dotted;
 }
+
+#cuttingboard {
+    margin-left: 990px;
+    margin-top: -535px;
+    position: absolute;
+}
