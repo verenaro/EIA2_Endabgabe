@@ -21,8 +21,9 @@ var EIA2_Endabgabe_Döner_Trainer;
     let staffs = [];
     let customers = [];
     let basis = ["Döner", "Yufka", "Lahmacun"];
-    let topping = ["corn", "salad", "sauce"];
-    let topping2 = ["red cabbage", "onion", "tomato"];
+    let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
+    let sauce = ["sauce"];
+    let word = ["with", "without"];
     //let words: string[] = ["with", "without"];
     let imgData;
     window.addEventListener("load", handleLoad);
@@ -206,8 +207,9 @@ var EIA2_Endabgabe_Döner_Trainer;
     function getOrder() {
         let object1 = Math.floor(Math.random() * basis.length);
         let object2 = Math.floor(Math.random() * topping.length);
-        let object3 = Math.floor(Math.random() * topping2.length);
-        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + topping2[object3] + " " + "Thank you."];
+        let object3 = Math.floor(Math.random() * sauce.length);
+        let object4 = Math.floor(Math.random() * word.length);
+        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + " " + ". Thank you."];
         let orderDiv = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
     }

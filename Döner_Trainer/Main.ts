@@ -31,8 +31,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let customers: Customer[] = [];
 
     let basis: string[] = ["Döner", "Yufka", "Lahmacun"];
-    let topping: string[] = ["corn", "salad", "sauce"];
-    let topping2: string[] = ["red cabbage", "onion", "tomato"];
+    let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
+    let sauce: string[] = ["sauce"];
+    let word: string[] = ["with", "without"];
 
     //let words: string[] = ["with", "without"];
     let imgData: ImageData;
@@ -322,11 +323,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         let object1: number = Math.floor(Math.random() * basis.length);
         let object2: number = Math.floor(Math.random() * topping.length);
-        let object3: number = Math.floor(Math.random() * topping2.length);
+        let object3: number = Math.floor(Math.random() * sauce.length);
+        let object4: number = Math.floor(Math.random() * word.length);
 
 
 
-        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + topping2[object3] + " " + "Thank you." ];
+
+        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " +  word[object4] + " " + sauce[object3] + " " + ". Thank you." ];
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
