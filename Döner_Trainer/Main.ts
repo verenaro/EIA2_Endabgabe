@@ -244,15 +244,16 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     
         for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(-200, 0));
+            let staff: Staff = new Staff(new Vector(-200, -200));
 
 
             staffs.push(staff);
 
-            for (let staff of staffs) {
-                staff.draw();
-            }
+           
 
+        }
+        for (let staff of staffs) {
+            staff.draw();
         }
         console.log(staffs);
 
