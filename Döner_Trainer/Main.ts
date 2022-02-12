@@ -109,6 +109,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
+        
 
 
 
@@ -229,11 +230,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imgData, 0, 0);
 
-
-
-
-
     }
+
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
@@ -258,9 +256,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             }
 
         }
-
-
-
 
     }
 
