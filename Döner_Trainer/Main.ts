@@ -244,7 +244,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     
         for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(-200, -200));
+            let staff: Staff = new Staff(new Vector(-100, 0));
 
 
             staffs.push(staff);

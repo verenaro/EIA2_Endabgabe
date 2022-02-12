@@ -162,7 +162,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {
-            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-200, -200));
+            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
             staffs.push(staff);
         }
         for (let staff of staffs) {
