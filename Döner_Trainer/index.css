@@ -46,18 +46,6 @@ footer {
     margin-top: 650px;
 }
 
-#time {
-    margin: auto;
-    width: 175px;
-    height: 80px;
-    background-color: slategray;
-    color: cadetblue;
-    position: absolute;
-    margin-top: -90px;
-    margin-left: 45%;
-    margin-top: -800px;
-}
-
 #storage {
     width: 200px;
     height: 200px;
@@ -85,7 +73,7 @@ footer {
     width: 200px;
     height: 200px;
     margin-top: 340px;
-    margin-left: 130px;
+    margin-left: 1100px;
     border: lightblue dotted;
 }
 
@@ -121,7 +109,7 @@ footer {
 }
 
 #finishorder {
-    margin-left: 180px;
+    margin-left: 1160px;
     margin-top: 10px;
     position: absolute;
     color: lightslategray;

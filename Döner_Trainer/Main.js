@@ -19,13 +19,13 @@ var EIA2_Endabgabe_Döner_Trainer;
     let staffRestperiod;
     let ingredients = [];
     let staffs = [];
+    let customers = [];
     let imgData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         let startButton = document.querySelector("#startButton");
         startButton.addEventListener("click", prepareGame);
         document.getElementById("gamefield").hidden = true;
-        document.getElementById("time").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
@@ -50,7 +50,6 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function buildGamescreen() {
         document.getElementById("gamefield").hidden = false;
-        document.getElementById("time").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
         document.getElementById("order").hidden = false;
@@ -73,6 +72,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
+        drawCustomer();
         window.setInterval(update, 20);
     }
     function drawCounter(_position) {
@@ -167,6 +167,16 @@ var EIA2_Endabgabe_Döner_Trainer;
         }
         for (let staff of staffs) {
             staff.draw();
+        }
+        console.log(staffs);
+    }
+    function drawCustomer() {
+        for (let i = 0; i < customerAmount; i++) {
+            let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
+            customers.push(customer);
+        }
+        for (let customer of customers) {
+            customer.draw();
         }
         console.log(staffs);
     }

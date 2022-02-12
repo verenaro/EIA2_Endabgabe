@@ -28,6 +28,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
+    let customers: Customer[] = [];
     let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
@@ -38,7 +39,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         startButton.addEventListener("click", prepareGame);
 
         document.getElementById("gamefield").hidden = true;
-        document.getElementById("time").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
         document.getElementById("order").hidden = true;
@@ -82,7 +82,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function buildGamescreen(): void {
 
         document.getElementById("gamefield").hidden = false;
-        document.getElementById("time").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
         document.getElementById("order").hidden = false;
@@ -109,6 +108,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
+        drawCustomer();
 
 
 
@@ -254,6 +254,25 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
         for (let staff of staffs) {
             staff.draw();
+        }
+        console.log(staffs);
+
+    }
+    function drawCustomer(): void {
+
+
+    
+        for (let i: number = 0; i < customerAmount; i++) {
+            let customer: Customer = new Customer(new Vector(-100, 0));
+
+
+            customers.push(customer);
+
+           
+
+        }
+        for (let customer of customers) {
+            customer.draw();
         }
         console.log(staffs);
 
