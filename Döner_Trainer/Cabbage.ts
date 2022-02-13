@@ -1,7 +1,7 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Cabbage extends Ingredient {
 
-        constructor(_position: Vector, _amount:number, _containeramount: number) {
+        constructor(_position: Vector, _amount: number, _containeramount: number) {
             super(_position, _amount, _containeramount);
         }
 

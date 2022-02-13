@@ -184,6 +184,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
         }
         mood() {
+            //console.log("mood")
         }
         move(_timeslice) {
             let offset = this.velocity.copy();

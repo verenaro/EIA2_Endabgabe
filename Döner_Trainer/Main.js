@@ -24,6 +24,12 @@ var EIA2_Endabgabe_Döner_Trainer;
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
     let word = ["with", "without"];
+    //neue Containerwerte
+    let containerSalad;
+    let containerCabbage;
+    let containerOnion;
+    let containerCorn;
+    let containerTomato;
     //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
     window.addEventListener("load", handleLoad);
@@ -118,7 +124,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         let salad = document.querySelector("#salad");
         //let cabbage: HTMLButtonElement;
         //let onion: HTMLButtonElement;
-        //let tomato: HTMLButtonElement;
+        let tomato = document.querySelector("#tomato");
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
@@ -130,7 +136,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         salad.addEventListener("click", updateSalad);
         //cabbage.addEventListener("click", collectCabbage);
         //onion.addEventListener("click", collectOnion);
-        //tomato.addEventListener("click", collectTomato);
+        tomato.addEventListener("click", updateTomato);
         console.log();
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
@@ -229,9 +235,19 @@ var EIA2_Endabgabe_Döner_Trainer;
             corn: containerCapacity,
             tomato: containerCapacity
         };
-        storageLeft.salad -= 30;
-        storageLeft.onion -= 0;
-        storageLeft.corn -= 0;
+        containerSalad = storageLeft.salad -= 30;
+        let containerDiv = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+    }
+    function updateTomato(_event) {
+        let storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
+        containerTomato = storageLeft.tomato -= 30;
         let containerDiv = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
@@ -255,6 +271,7 @@ var EIA2_Endabgabe_Döner_Trainer;
                 clearInterval(interval);
                 customers.length = 0;
             }
+            // tslint:disable-next-line: align
         }, 2000);
     }
     // Bestellung anzeigen lassen

@@ -194,11 +194,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
 
         mood(): void {
-
+            //console.log("mood")
         }
 
         public move(_timeslice: number): void {
-            
+
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);

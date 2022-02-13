@@ -36,6 +36,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let sauce: string[] = ["sauce"];
     let word: string[] = ["with", "without"];
 
+    //neue Containerwerte
+    let containerSalad: number;
+    let containerCabbage: number;
+    let containerOnion: number;
+    let containerCorn: number;
+    let containerTomato: number;
+
     interface Storage {
         salad: number;
         cabbage: number;
@@ -44,6 +51,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         tomato: number;
 
     }
+
+   
 
     //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
@@ -167,7 +176,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
         //let cabbage: HTMLButtonElement;
         //let onion: HTMLButtonElement;
-        //let tomato: HTMLButtonElement;
+        let tomato: HTMLButtonElement= <HTMLButtonElement>document.querySelector("#tomato");
 
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
@@ -180,7 +189,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         salad.addEventListener("click", updateSalad);
         //cabbage.addEventListener("click", collectCabbage);
         //onion.addEventListener("click", collectOnion);
-        //tomato.addEventListener("click", collectTomato);
+        tomato.addEventListener("click", updateTomato);
 
         console.log();
 
@@ -313,7 +322,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + containerCapacity + " g of onion " + "<br>" + containerCapacity + " g of corn " + "<br>" + containerCapacity + " g of tomato " + "<br>" + containerCapacity+ " g of salad" + "<br>" + containerCapacity + " g of cabbage";
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + containerCapacity + " g of onion " + "<br>" + containerCapacity + " g of corn " + "<br>" + containerCapacity + " g of tomato " + "<br>" + containerCapacity + " g of salad" + "<br>" + containerCapacity + " g of cabbage";
     }
 
     function updateSalad(_event: Event): void {
@@ -325,9 +334,23 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             tomato: containerCapacity
         };
 
-        storageLeft.salad -= 30;
-        storageLeft.onion -= 0;
-        storageLeft.corn -= 0;
+        containerSalad = storageLeft.salad -= 30;
+
+
+        let containerDiv: HTMLElement = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+    }
+
+    function updateTomato(_event: Event): void {
+        let storageLeft: Storage = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
+
+        containerTomato = storageLeft.tomato -= 30;
 
 
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
@@ -378,6 +401,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
                 }
 
+                // tslint:disable-next-line: align
             }, 2000);
 
 
