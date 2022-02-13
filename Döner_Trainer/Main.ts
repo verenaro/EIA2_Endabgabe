@@ -49,6 +49,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     let storageLeft: Storage;
+    let ingredientLeft: Storage;
 
 
 
@@ -110,6 +111,14 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             onion: containerCapacity,
             corn: containerCapacity,
             tomato: containerCapacity
+        };
+
+        ingredientLeft = {
+            salad: storageCapacity,
+            cabbage: storageCapacity,
+            onion: storageCapacity,
+            corn: storageCapacity,
+            tomato: storageCapacity
         };
 
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
@@ -176,9 +185,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let corn: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#corn");
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
         let cabbage: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cabbage");
-        let onion: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#conion");
+        let onion: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#onion");
         let tomato: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
         let refill: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cuttingboard");
+        let reorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#reorder");
 
 
 
@@ -195,6 +205,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         onion.addEventListener("click", updateOnion);
         tomato.addEventListener("click", updateTomato);
         refill.addEventListener("click", refillContainer);
+        reorder.addEventListener("click", reorderIngredients;
 
         console.log(onion);
 
@@ -216,10 +227,22 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
-        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
+        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + ingredientLeft.onion + " g onions " + "<br>" + ingredientLeft.corn + " g of corn" + "<br>" + ingredientLeft.tomato + " g of tomatoes " + "<br>" + ingredientLeft.salad + " g of salad" + "<br>" + ingredientLeft.cabbage + " g of cabbage" + "<br>";
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
+
+    function reorderIngredients(_event: Event): void {
+        ingredientLeft = {
+            salad: storageCapacity,
+            cabbage: storageCapacity,
+            onion: storageCapacity,
+            corn: storageCapacity,
+            tomato: storageCapacity
+        };
+        showContainerCapacity();
+    }
+
 
     function refillContainer(_event: Event): void {
         storageLeft = {
@@ -261,7 +284,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
-    
+
 
     function updateTomato(_event: Event): void {
 
@@ -270,13 +293,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
 
     }
-    
-
-   
-
-  
-
-
 
 
 
@@ -344,6 +360,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
+    //draw Backgorund
 
     function drawCounter(_position: Vector): void {
         //Theke zeichnen
