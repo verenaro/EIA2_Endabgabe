@@ -254,7 +254,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         storageLeft.salad -= 30;
         if (storageLeft.salad <= 0) {
-            alert("please refill salad");
+            alert("please cut new salad");
         }
 
         ingredientLeft.salad -= storageLeft.salad;
@@ -268,7 +268,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         storageLeft.cabbage -= 30;
 
         if (storageLeft.cabbage <= 0) {
-            alert("please refill cabbage");
+            alert("please cut new cabbage");
         }
 
         ingredientLeft.cabbage -= storageLeft.cabbage;
@@ -282,7 +282,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         storageLeft.onion -= 20;
 
         if (storageLeft.onion <= 0) {
-            alert("please refill onions");
+            alert("please cut new onions");
         }
 
         ingredientLeft.onion -= storageLeft.onion;
