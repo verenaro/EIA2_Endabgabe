@@ -139,7 +139,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
-
         getOrder();
 
        
@@ -175,7 +174,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         window.setInterval(update, 20);
 
-        setInterval(drawCustomer, 30000);
+        setInterval(drawCustomer, 60000);
 
 
     }
@@ -334,7 +333,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
 
     }
-  
+
 
     // Kunden zeichnen lassen
     function drawCustomer(): void {
@@ -353,8 +352,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 customer.draw();
 
                 if (customers.length == customerAmount) {
-                    customers.length = 0;
                     clearInterval(interval);
+                    customers.length = 0;
+                    
+                    
                 }
 
             }, 2000);

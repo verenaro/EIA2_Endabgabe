@@ -129,7 +129,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         //tomato.addEventListener("click", collectTomato);
         console.log();
         window.setInterval(update, 20);
-        setInterval(drawCustomer, 30000);
+        setInterval(drawCustomer, 60000);
     }
     function drawCounter(_position) {
         //Theke zeichnen
@@ -239,8 +239,8 @@ var EIA2_Endabgabe_Döner_Trainer;
             customers.push(customer);
             customer.draw();
             if (customers.length == customerAmount) {
-                customers.length = 0;
                 clearInterval(interval);
+                customers.length = 0;
             }
         }, 2000);
     }
