@@ -13,6 +13,9 @@ var EIA2_Endabgabe_Döner_Trainer;
             this.amount = _amount;
             this.containeramount = _containeramount;
         }
+        draw() {
+            //
+        }
     }
     EIA2_Endabgabe_Döner_Trainer.Ingredient = Ingredient;
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));

@@ -1,9 +1,9 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
-    export abstract class Ingredient {
+    export class Ingredient {
         position: Vector;
         amount: number;
         containeramount: number;
-       
+
 
         constructor(_position: Vector, _amount: number, _containeramount: number) {
             if (_position)
@@ -13,10 +13,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
             this.amount = _amount;
             this.containeramount = _containeramount;
-           
+
 
         }
 
-        abstract draw(): void;
+        draw(): void {
+            //
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
-   
+
 
     //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
@@ -176,7 +176,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
         //let cabbage: HTMLButtonElement;
         //let onion: HTMLButtonElement;
-        let tomato: HTMLButtonElement= <HTMLButtonElement>document.querySelector("#tomato");
+        let tomatoButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
+
+        let tomato: Ingredient = new Ingredient(new Vector(0, 0), 25, 25);
+
+        ingredients.push(tomato);
 
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
@@ -189,7 +193,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         salad.addEventListener("click", updateSalad);
         //cabbage.addEventListener("click", collectCabbage);
         //onion.addEventListener("click", collectOnion);
-        tomato.addEventListener("click", updateTomato);
+        tomatoButton.addEventListener("click", updateTomato);
 
         console.log();
 
@@ -302,6 +306,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         for (let ingredient of ingredients) {
 
             ingredient.draw();
+            console.log(ingredients);
 
         }
     }
@@ -350,11 +355,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             tomato: containerCapacity
         };
 
-        containerTomato = storageLeft.tomato -= 30;
+        storageLeft.tomato -= ingredients[0].containeramount;
 
 
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+
+        
     }
 
 

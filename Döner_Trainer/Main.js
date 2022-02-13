@@ -124,7 +124,9 @@ var EIA2_Endabgabe_Döner_Trainer;
         let salad = document.querySelector("#salad");
         //let cabbage: HTMLButtonElement;
         //let onion: HTMLButtonElement;
-        let tomato = document.querySelector("#tomato");
+        let tomatoButton = document.querySelector("#tomato");
+        let tomato = new EIA2_Endabgabe_Döner_Trainer.Ingredient(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), 25, 25);
+        ingredients.push(tomato);
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
@@ -136,7 +138,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         salad.addEventListener("click", updateSalad);
         //cabbage.addEventListener("click", collectCabbage);
         //onion.addEventListener("click", collectOnion);
-        tomato.addEventListener("click", updateTomato);
+        tomatoButton.addEventListener("click", updateTomato);
         console.log();
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
@@ -213,6 +215,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         ingredients.push(lahmacun);
         for (let ingredient of ingredients) {
             ingredient.draw();
+            console.log(ingredients);
         }
     }
     // end draw Ingredients
@@ -247,7 +250,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             corn: containerCapacity,
             tomato: containerCapacity
         };
-        containerTomato = storageLeft.tomato -= 30;
+        storageLeft.tomato -= ingredients[0].containeramount;
         let containerDiv = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
