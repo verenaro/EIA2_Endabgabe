@@ -201,21 +201,31 @@
         font-family: initial;
     }
     
-    .progress {
+    #progress {
         position: relative;
-        height: 10px;
-        width: 500px;
-        border: 2px solid darkgray;
+        margin-left: 650px;
+        margin-top: -700px;
+        height: 5px;
+        width: 200px;
+        border: 2px solid #a9a9a9;
         border-radius: 15px;
     }
     
-    .progress .color {
+    #progress #color {
         position: absolute;
         background-color: lightblue;
         width: 0px;
-        height: 10px;
+        height: 5px;
         border-radius: 5px;
         animation: progress 320s;
+    }
+    
+    #happiness {
+        position: absolute;
+        margin-left: 650px;
+        margin-top: -730px;
+        font-family: initial;
+        color: lightblue;
     }
     
     @keyframes progress {
