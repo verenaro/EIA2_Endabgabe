@@ -86,6 +86,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
+
     function prepareGame(_event: Event): void {
 
         formData = new FormData(document.forms[0]);
@@ -111,12 +112,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             tomato: containerCapacity
         };
 
-
-        buildGamescreen();
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
 
-
+        buildGamescreen();
 
     }
 
@@ -171,15 +170,16 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let cuttingboard: HTMLButtonElement;
         //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         //let yufka: HTMLButtonElement;
         //let lahmacun: HTMLButtonElement;
         let corn: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#corn");
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
         let cabbage: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cabbage");
-        let onion2: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#conion");
-        let tomato2: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
+        let onion: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#conion");
+        let tomato: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
+        let refill: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cuttingboard");
+
 
 
 
@@ -192,10 +192,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
         cabbage.addEventListener("click", updateCabbage);
-        onion2.addEventListener("click", updateOnion);
-        tomato2.addEventListener("click", updateTomato);
+        onion.addEventListener("click", updateOnion);
+        tomato.addEventListener("click", updateTomato);
+        refill.addEventListener("click", refillContainer);
 
-        console.log(onion2);
+        console.log(onion);
 
         window.setInterval(update, 20);
 
@@ -220,6 +221,16 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
 
+    function refillContainer(_event: Event): void {
+        storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
+        showContainerCapacity();
+    }
     function updateSalad(_event: Event): void {
 
         storageLeft.salad -= 30;
@@ -228,13 +239,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
-    function updateTomato(_event: Event): void {
-
-        storageLeft.tomato -= 30;
-
-        showContainerCapacity();
-
-    }
     function updateCabbage(_event: Event): void {
 
         storageLeft.cabbage -= 30;
@@ -250,13 +254,27 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
 
     }
-
     function updateCorn(_event: Event): void {
 
         storageLeft.corn -= 25;
 
         showContainerCapacity();
     }
+
+    
+
+    function updateTomato(_event: Event): void {
+
+        storageLeft.tomato -= 40;
+
+        showContainerCapacity();
+
+    }
+    
+
+   
+
+  
 
 
 

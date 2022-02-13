@@ -72,9 +72,9 @@ var EIA2_Endabgabe_Döner_Trainer;
             corn: containerCapacity,
             tomato: containerCapacity
         };
-        buildGamescreen();
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
+        buildGamescreen();
     }
     function buildGamescreen() {
         //Elemente anzeigen
@@ -117,15 +117,15 @@ var EIA2_Endabgabe_Döner_Trainer;
         getOrder();
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let cuttingboard: HTMLButtonElement;
         //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         //let yufka: HTMLButtonElement;
         //let lahmacun: HTMLButtonElement;
         let corn = document.querySelector("#corn");
         let salad = document.querySelector("#salad");
         let cabbage = document.querySelector("#cabbage");
-        let onion2 = document.querySelector("#conion");
-        let tomato2 = document.querySelector("#tomato");
+        let onion = document.querySelector("#conion");
+        let tomato = document.querySelector("#tomato");
+        let refill = document.querySelector("#cuttingboard");
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
@@ -135,9 +135,10 @@ var EIA2_Endabgabe_Döner_Trainer;
         corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
         cabbage.addEventListener("click", updateCabbage);
-        onion2.addEventListener("click", updateOnion);
-        tomato2.addEventListener("click", updateTomato);
-        console.log(onion2);
+        onion.addEventListener("click", updateOnion);
+        tomato.addEventListener("click", updateTomato);
+        refill.addEventListener("click", refillContainer);
+        console.log(onion);
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
     }
@@ -152,12 +153,18 @@ var EIA2_Endabgabe_Döner_Trainer;
         let containerDiv = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
-    function updateSalad(_event) {
-        storageLeft.salad -= 30;
+    function refillContainer(_event) {
+        storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
         showContainerCapacity();
     }
-    function updateTomato(_event) {
-        storageLeft.tomato -= 30;
+    function updateSalad(_event) {
+        storageLeft.salad -= 30;
         showContainerCapacity();
     }
     function updateCabbage(_event) {
@@ -170,6 +177,10 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateCorn(_event) {
         storageLeft.corn -= 25;
+        showContainerCapacity();
+    }
+    function updateTomato(_event) {
+        storageLeft.tomato -= 40;
         showContainerCapacity();
     }
     // Mitarbeiter zeichnen lassen
