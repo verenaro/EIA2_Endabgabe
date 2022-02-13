@@ -19,10 +19,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     //let staffChoice: number;
 
 
-    // let kebap: string[] = ["flatbread", "vegan meat"];
-    // let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
-    // let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
-
 
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement | null;
