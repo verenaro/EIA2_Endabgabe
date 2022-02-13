@@ -24,12 +24,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
     let word = ["with", "without"];
-    //neue Containerwerte
-    let containerSalad;
-    let containerCabbage;
-    let containerOnion;
-    let containerCorn;
-    let containerTomato;
+    let storageLeft;
     //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
     window.addEventListener("load", handleLoad);
@@ -70,6 +65,13 @@ var EIA2_Endabgabe_Döner_Trainer;
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
         staffRestperiod = Number(formData.get("restperiod"));
+        storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
         buildGamescreen();
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
@@ -115,33 +117,93 @@ var EIA2_Endabgabe_Döner_Trainer;
         getOrder();
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let kuttingboard: HTMLButtonElement;
+        //let cuttingboard: HTMLButtonElement;
         //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         //let yufka: HTMLButtonElement;
         //let lahmacun: HTMLButtonElement;
-        //let corn: HTMLButtonElement;
-        //let sauce: HTMLButtonElement;
+        let corn = document.querySelector("#corn");
         let salad = document.querySelector("#salad");
-        //let cabbage: HTMLButtonElement;
-        //let onion: HTMLButtonElement;
-        let tomatoButton = document.querySelector("#tomato");
-        let tomato = new EIA2_Endabgabe_Döner_Trainer.Ingredient(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), 25, 25);
-        ingredients.push(tomato);
+        let cabbage = document.querySelector("#cabbage");
+        let onion2 = document.querySelector("#conion");
+        let tomato2 = document.querySelector("#tomato");
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
         //kebap.addEventListener("click", collectKebap);
         //yufka.addEventListener("click", collectYufke);
         //lahmacun.addEventListener("click", collectLahmacun);
-        //corn.addEventListener("click", collectCorn);
-        //sauce.addEventListener("click", collectSauce);
+        corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
-        //cabbage.addEventListener("click", collectCabbage);
-        //onion.addEventListener("click", collectOnion);
-        tomatoButton.addEventListener("click", updateTomato);
-        console.log();
+        cabbage.addEventListener("click", updateCabbage);
+        onion2.addEventListener("click", updateOnion);
+        tomato2.addEventListener("click", updateTomato);
+        console.log(onion2);
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
+    }
+    function update() {
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
+    }
+    // Containerstand anzeigen
+    function showContainerCapacity() {
+        let storageDiv = document.getElementById("storage");
+        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
+        let containerDiv = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+    }
+    function updateSalad(_event) {
+        storageLeft.salad -= 30;
+        showContainerCapacity();
+    }
+    function updateTomato(_event) {
+        storageLeft.tomato -= 30;
+        showContainerCapacity();
+    }
+    function updateCabbage(_event) {
+        storageLeft.cabbage -= 30;
+        showContainerCapacity();
+    }
+    function updateOnion(_event) {
+        storageLeft.onion -= 20;
+        showContainerCapacity();
+    }
+    function updateCorn(_event) {
+        storageLeft.corn -= 25;
+        showContainerCapacity();
+    }
+    // Mitarbeiter zeichnen lassen
+    function drawStaff() {
+        for (let i = 0; i < staffAmount; i++) {
+            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
+            staffs.push(staff);
+        }
+        for (let staff of staffs) {
+            staff.draw();
+        }
+    }
+    // Kunden zeichnen lassen
+    function drawCustomer() {
+        let interval = setInterval(function () {
+            let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
+            customers.push(customer);
+            customer.draw();
+            if (customers.length == customerAmount) {
+                clearInterval(interval);
+                customers.length = 0;
+            }
+            // tslint:disable-next-line: align
+        }, 2000);
+    }
+    // Bestellung anzeigen lassen
+    function getOrder() {
+        let object1 = Math.floor(Math.random() * basis.length);
+        let object2 = Math.floor(Math.random() * topping.length);
+        let object3 = Math.floor(Math.random() * sauce.length);
+        let object4 = Math.floor(Math.random() * word.length);
+        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
+        let orderDiv = document.getElementById("order");
+        orderDiv.innerHTML = "order:" + "<br>" + order;
     }
     function drawCounter(_position) {
         //Theke zeichnen
@@ -219,73 +281,5 @@ var EIA2_Endabgabe_Döner_Trainer;
         }
     }
     // end draw Ingredients
-    function update() {
-        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        //crc2.putImageData(imgData, 0, 0);
-    }
-    // Containerstand anzeigen
-    function showContainerCapacity() {
-        let storageDiv = document.getElementById("storage");
-        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
-        let containerDiv = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + containerCapacity + " g of onion " + "<br>" + containerCapacity + " g of corn " + "<br>" + containerCapacity + " g of tomato " + "<br>" + containerCapacity + " g of salad" + "<br>" + containerCapacity + " g of cabbage";
-    }
-    function updateSalad(_event) {
-        let storageLeft = {
-            salad: containerCapacity,
-            cabbage: containerCapacity,
-            onion: containerCapacity,
-            corn: containerCapacity,
-            tomato: containerCapacity
-        };
-        containerSalad = storageLeft.salad -= 30;
-        let containerDiv = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
-    }
-    function updateTomato(_event) {
-        let storageLeft = {
-            salad: containerCapacity,
-            cabbage: containerCapacity,
-            onion: containerCapacity,
-            corn: containerCapacity,
-            tomato: containerCapacity
-        };
-        storageLeft.tomato -= ingredients[0].containeramount;
-        let containerDiv = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
-    }
-    // Mitarbeiter zeichnen lassen
-    function drawStaff() {
-        for (let i = 0; i < staffAmount; i++) {
-            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
-            staffs.push(staff);
-        }
-        for (let staff of staffs) {
-            staff.draw();
-        }
-    }
-    // Kunden zeichnen lassen
-    function drawCustomer() {
-        let interval = setInterval(function () {
-            let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
-            customers.push(customer);
-            customer.draw();
-            if (customers.length == customerAmount) {
-                clearInterval(interval);
-                customers.length = 0;
-            }
-            // tslint:disable-next-line: align
-        }, 2000);
-    }
-    // Bestellung anzeigen lassen
-    function getOrder() {
-        let object1 = Math.floor(Math.random() * basis.length);
-        let object2 = Math.floor(Math.random() * topping.length);
-        let object3 = Math.floor(Math.random() * sauce.length);
-        let object4 = Math.floor(Math.random() * word.length);
-        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
-        let orderDiv = document.getElementById("order");
-        orderDiv.innerHTML = "order:" + "<br>" + order;
-    }
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
 //# sourceMappingURL=Main.js.map

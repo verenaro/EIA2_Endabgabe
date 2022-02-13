@@ -37,11 +37,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let word: string[] = ["with", "without"];
 
     //neue Containerwerte
-    let containerSalad: number;
-    let containerCabbage: number;
-    let containerOnion: number;
-    let containerCorn: number;
-    let containerTomato: number;
+
 
     interface Storage {
         salad: number;
@@ -51,6 +47,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         tomato: number;
 
     }
+
+    let storageLeft: Storage;
 
 
 
@@ -105,7 +103,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         containerCapacity = Number(formData.get("containercapacity"));
         staffRestperiod = Number(formData.get("restperiod"));
 
-
+        storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
 
 
         buildGamescreen();
@@ -167,20 +171,17 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let kuttingboard: HTMLButtonElement;
+        //let cuttingboard: HTMLButtonElement;
         //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         //let yufka: HTMLButtonElement;
         //let lahmacun: HTMLButtonElement;
-        //let corn: HTMLButtonElement;
-        //let sauce: HTMLButtonElement;
+        let corn: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#corn");
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
-        //let cabbage: HTMLButtonElement;
-        //let onion: HTMLButtonElement;
-        let tomatoButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
+        let cabbage: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cabbage");
+        let onion2: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#conion");
+        let tomato2: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
 
-        let tomato: Ingredient = new Ingredient(new Vector(0, 0), 25, 25);
 
-        ingredients.push(tomato);
 
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
@@ -188,14 +189,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         //kebap.addEventListener("click", collectKebap);
         //yufka.addEventListener("click", collectYufke);
         //lahmacun.addEventListener("click", collectLahmacun);
-        //corn.addEventListener("click", collectCorn);
-        //sauce.addEventListener("click", collectSauce);
+        corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
-        //cabbage.addEventListener("click", collectCabbage);
-        //onion.addEventListener("click", collectOnion);
-        tomatoButton.addEventListener("click", updateTomato);
+        cabbage.addEventListener("click", updateCabbage);
+        onion2.addEventListener("click", updateOnion);
+        tomato2.addEventListener("click", updateTomato);
 
-        console.log();
+        console.log(onion2);
 
         window.setInterval(update, 20);
 
@@ -203,6 +203,129 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
     }
+    function update(): void {
+
+        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        //crc2.putImageData(imgData, 0, 0);
+
+
+
+    }
+    // Containerstand anzeigen
+
+    function showContainerCapacity(): void {
+        let storageDiv: HTMLElement = document.getElementById("storage");
+        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
+        let containerDiv: HTMLElement = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+    }
+
+    function updateSalad(_event: Event): void {
+
+        storageLeft.salad -= 30;
+
+
+        showContainerCapacity();
+    }
+
+    function updateTomato(_event: Event): void {
+
+        storageLeft.tomato -= 30;
+
+        showContainerCapacity();
+
+    }
+    function updateCabbage(_event: Event): void {
+
+        storageLeft.cabbage -= 30;
+
+        showContainerCapacity();
+
+    }
+
+    function updateOnion(_event: Event): void {
+
+        storageLeft.onion -= 20;
+
+        showContainerCapacity();
+
+    }
+
+    function updateCorn(_event: Event): void {
+
+        storageLeft.corn -= 25;
+
+        showContainerCapacity();
+    }
+
+
+
+
+
+    // Mitarbeiter zeichnen lassen
+    function drawStaff(): void {
+
+        for (let i: number = 0; i < staffAmount; i++) {
+            let staff: Staff = new Staff(new Vector(-100, 0));
+
+            staffs.push(staff);
+
+        }
+
+        for (let staff of staffs) {
+            staff.draw();
+
+        }
+
+    }
+
+
+    // Kunden zeichnen lassen
+    function drawCustomer(): void {
+
+        let interval: number = setInterval(
+
+            function (): void {
+
+
+
+                let customer: Customer = new Customer(new Vector(-100, 0));
+
+
+                customers.push(customer);
+
+                customer.draw();
+
+                if (customers.length == customerAmount) {
+                    clearInterval(interval);
+                    customers.length = 0;
+
+
+                }
+
+                // tslint:disable-next-line: align
+            }, 2000);
+
+
+    }
+
+
+    // Bestellung anzeigen lassen
+    function getOrder(): void {
+
+        let object1: number = Math.floor(Math.random() * basis.length);
+        let object2: number = Math.floor(Math.random() * topping.length);
+        let object3: number = Math.floor(Math.random() * sauce.length);
+        let object4: number = Math.floor(Math.random() * word.length);
+
+
+        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
+
+        let orderDiv: HTMLElement = document.getElementById("order");
+        orderDiv.innerHTML = "order:" + "<br>" + order;
+
+    }
+
 
     function drawCounter(_position: Vector): void {
         //Theke zeichnen
@@ -313,123 +436,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     // end draw Ingredients
 
-    function update(): void {
-
-        //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        //crc2.putImageData(imgData, 0, 0);
-
-
-
-    }
-    // Containerstand anzeigen
-
-    function showContainerCapacity(): void {
-        let storageDiv: HTMLElement = document.getElementById("storage");
-        storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
-        let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + containerCapacity + " g of onion " + "<br>" + containerCapacity + " g of corn " + "<br>" + containerCapacity + " g of tomato " + "<br>" + containerCapacity + " g of salad" + "<br>" + containerCapacity + " g of cabbage";
-    }
-
-    function updateSalad(_event: Event): void {
-        let storageLeft: Storage = {
-            salad: containerCapacity,
-            cabbage: containerCapacity,
-            onion: containerCapacity,
-            corn: containerCapacity,
-            tomato: containerCapacity
-        };
-
-        containerSalad = storageLeft.salad -= 30;
-
-
-        let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
-    }
-
-    function updateTomato(_event: Event): void {
-        let storageLeft: Storage = {
-            salad: containerCapacity,
-            cabbage: containerCapacity,
-            onion: containerCapacity,
-            corn: containerCapacity,
-            tomato: containerCapacity
-        };
-
-        storageLeft.tomato -= ingredients[0].containeramount;
-
-
-        let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
-
-        
-    }
-
-
-
-
-    // Mitarbeiter zeichnen lassen
-    function drawStaff(): void {
-
-        for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(-100, 0));
-
-            staffs.push(staff);
-
-        }
-
-        for (let staff of staffs) {
-            staff.draw();
-
-        }
-
-    }
-
-
-    // Kunden zeichnen lassen
-    function drawCustomer(): void {
-
-        let interval: number = setInterval(
-
-            function (): void {
-
-
-
-                let customer: Customer = new Customer(new Vector(-100, 0));
-
-
-                customers.push(customer);
-
-                customer.draw();
-
-                if (customers.length == customerAmount) {
-                    clearInterval(interval);
-                    customers.length = 0;
-
-
-                }
-
-                // tslint:disable-next-line: align
-            }, 2000);
-
-
-    }
-
-
-    // Bestellung anzeigen lassen
-    function getOrder(): void {
-
-        let object1: number = Math.floor(Math.random() * basis.length);
-        let object2: number = Math.floor(Math.random() * topping.length);
-        let object3: number = Math.floor(Math.random() * sauce.length);
-        let object4: number = Math.floor(Math.random() * word.length);
-
-
-        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
-
-        let orderDiv: HTMLElement = document.getElementById("order");
-        orderDiv.innerHTML = "order:" + "<br>" + order;
-
-    }
 
 
 
