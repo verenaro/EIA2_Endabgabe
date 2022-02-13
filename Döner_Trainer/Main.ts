@@ -205,7 +205,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         onion.addEventListener("click", updateOnion);
         tomato.addEventListener("click", updateTomato);
         refill.addEventListener("click", refillContainer);
-        reorder.addEventListener("click", reorderIngredients;
+        reorder.addEventListener("click", reorderIngredients);
 
         console.log(onion);
 
@@ -229,7 +229,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + ingredientLeft.onion + " g onions " + "<br>" + ingredientLeft.corn + " g of corn" + "<br>" + ingredientLeft.tomato + " g of tomatoes " + "<br>" + ingredientLeft.salad + " g of salad" + "<br>" + ingredientLeft.cabbage + " g of cabbage" + "<br>";
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
+        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
 
     function reorderIngredients(_event: Event): void {
