@@ -185,22 +185,42 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateSalad(_event) {
         storageLeft.salad -= 30;
+        if (storageLeft.salad <= 0) {
+            alert("please refill salad");
+        }
+        ingredientLeft.salad -= storageLeft.salad;
         showContainerCapacity();
     }
     function updateCabbage(_event) {
         storageLeft.cabbage -= 30;
+        if (storageLeft.cabbage <= 0) {
+            alert("please refill cabbage");
+        }
+        ingredientLeft.cabbage -= storageLeft.cabbage;
         showContainerCapacity();
     }
     function updateOnion(_event) {
         storageLeft.onion -= 20;
+        if (storageLeft.onion <= 0) {
+            alert("please refill onions");
+        }
+        ingredientLeft.onion -= storageLeft.onion;
         showContainerCapacity();
     }
     function updateCorn(_event) {
         storageLeft.corn -= 25;
+        if (storageLeft.corn <= 0) {
+            alert("please refill corn");
+        }
+        ingredientLeft.corn -= storageLeft.corn;
         showContainerCapacity();
     }
     function updateTomato(_event) {
         storageLeft.tomato -= 40;
+        if (storageLeft.tomato <= 0) {
+            alert("please refill tomatoes");
+        }
+        ingredientLeft.tomato -= storageLeft.tomato;
         showContainerCapacity();
     }
     // Mitarbeiter zeichnen lassen
