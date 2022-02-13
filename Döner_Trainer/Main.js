@@ -17,8 +17,6 @@ var EIA2_Endabgabe_Döner_Trainer;
     let storageCapacity;
     let containerCapacity;
     let staffRestperiod;
-    //let staffChoice: number;
-    let kebapContainer = containerCapacity;
     let ingredients = [];
     let staffs = [];
     let customers = [];
@@ -112,24 +110,24 @@ var EIA2_Endabgabe_Döner_Trainer;
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
         //let kuttingboard: HTMLButtonElement;
-        let kebap = document.querySelector("#kebap");
+        //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         //let yufka: HTMLButtonElement;
         //let lahmacun: HTMLButtonElement;
         //let corn: HTMLButtonElement;
         //let sauce: HTMLButtonElement;
-        //let salad: HTMLButtonElement;
+        let salad = document.querySelector("#salad");
         //let cabbage: HTMLButtonElement;
         //let onion: HTMLButtonElement;
         //let tomato: HTMLButtonElement;
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
-        kebap.addEventListener("click", collectKebap);
+        //kebap.addEventListener("click", collectKebap);
         //yufka.addEventListener("click", collectYufke);
         //lahmacun.addEventListener("click", collectLahmacun);
         //corn.addEventListener("click", collectCorn);
         //sauce.addEventListener("click", collectSauce);
-        //salad.addEventListener("click", collectSalad);
+        salad.addEventListener("click", updateSalad);
         //cabbage.addEventListener("click", collectCabbage);
         //onion.addEventListener("click", collectOnion);
         //tomato.addEventListener("click", collectTomato);
@@ -216,17 +214,26 @@ var EIA2_Endabgabe_Döner_Trainer;
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         //crc2.putImageData(imgData, 0, 0);
     }
-    function collectKebap(_event) {
-        for (let x = kebapContainer = containerCapacity; x--;) {
-            console.log();
-        }
-    }
     // Containerstand anzeigen
     function showContainerCapacity() {
         let storageDiv = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + kebapContainer + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + containerCapacity + " g of onion " + "<br>" + containerCapacity + " g of corn " + "<br>" + containerCapacity + " g of tomato " + "<br>" + containerCapacity + " g of salad" + "<br>" + containerCapacity + " g of cabbage";
+    }
+    function updateSalad(_event) {
+        let storageLeft = {
+            salad: containerCapacity,
+            cabbage: containerCapacity,
+            onion: containerCapacity,
+            corn: containerCapacity,
+            tomato: containerCapacity
+        };
+        storageLeft.salad -= 30;
+        storageLeft.onion -= 0;
+        storageLeft.corn -= 0;
+        let containerDiv = document.getElementById("containerstorage");
+        containerDiv.innerHTML = "container-Storage" + "<br>" + " This is what you have left:" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
