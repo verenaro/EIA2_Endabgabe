@@ -16,6 +16,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let storageCapacity: number;
     let containerCapacity: number;
     let staffRestperiod: number;
+    //let staffChoice: number;
+
+    let kebapContainer: number = containerCapacity;
+    //let kebapStorage: number = storageCapacity;
 
 
     // let kebap: string[] = ["flatbread", "vegan meat"];
@@ -42,9 +46,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function handleLoad(_event: Event): void {
 
+        // start Button deklarieren, prepareGame aufrufen
         let startButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#startButton")!;
         startButton.addEventListener("click", prepareGame);
 
+        //Elemente verstecken
         document.getElementById("gamefield").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
@@ -62,12 +68,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("sauce").hidden = true;
         document.getElementById("cuttingboard").hidden = true;
 
-
-
-
-
-
-
     }
 
     function prepareGame(_event: Event): void {
@@ -80,12 +80,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         body.removeChild(form);
 
+        //Werte aus dem FormData als Variablen speichern
         staffAmount = Number(formData.get("staffamount"));
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
         staffRestperiod = Number(formData.get("restperiod"));
-
 
 
 
@@ -101,6 +101,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function buildGamescreen(): void {
 
+        //Elemente anzeigen
         document.getElementById("gamefield").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
@@ -123,6 +124,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
         crc2 = canvas.getContext("2d")!;
 
+        //calls
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
@@ -137,18 +139,49 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
-        drawCustomer();
+
         getOrder();
 
+       
 
 
+        //Button deklarieren für Ingredients
+        //let finishorder: HTMLButtonElement;
+        //let kuttingboard: HTMLButtonElement;
+        let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
+        //let yufka: HTMLButtonElement;
+        //let lahmacun: HTMLButtonElement;
+        //let corn: HTMLButtonElement;
+        //let sauce: HTMLButtonElement;
+        //let salad: HTMLButtonElement;
+        //let cabbage: HTMLButtonElement;
+        //let onion: HTMLButtonElement;
+        //let tomato: HTMLButtonElement;
+
+        //click Listener installieren
+        //finishorder.addEventListener("click", compareOrder);
+        //kuttingboard.addEventListener("click", cutIngredients);
+        kebap.addEventListener("click", collectKebap);
+        //yufka.addEventListener("click", collectYufke);
+        //lahmacun.addEventListener("click", collectLahmacun);
+        //corn.addEventListener("click", collectCorn);
+        //sauce.addEventListener("click", collectSauce);
+        //salad.addEventListener("click", collectSalad);
+        //cabbage.addEventListener("click", collectCabbage);
+        //onion.addEventListener("click", collectOnion);
+        //tomato.addEventListener("click", collectTomato);
+
+        console.log();
 
         window.setInterval(update, 20);
+
+        setInterval(drawCustomer, 30000);
+
 
     }
 
     function drawCounter(_position: Vector): void {
-        //draw counter
+        //Theke zeichnen
         crc2.beginPath();
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_position.x, _position.y, 800, 150);
@@ -156,13 +189,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     function drawCuttingboard(_position: Vector): void {
-        //draw cuttingboard
+        //Schneidebrett zeichnen
         crc2.beginPath();
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_position.x, _position.y, 200, 100);
         crc2.fillStyle = "#B9773A";
         crc2.fillRect(_position.x + 25, _position.y + 9, 150, 80);
-        //draw Knife
+        //Messer zeichnen
         crc2.beginPath();
         crc2.fillStyle = "#C0C0C0";
         crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
@@ -171,7 +204,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     function drawContainer(_position: Vector): void {
-        //draw container
+        //Container zeichnen
         crc2.fillStyle = "#696969";
         crc2.fillRect(_position.x, _position.y, 65, 65);
         crc2.fillRect(_position.x - 100, _position.y, 65, 65);
@@ -182,7 +215,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
-    // draw Ingredients
+    //alle Zutaten zeichnen
 
     function drawSalad(): void {
 
@@ -264,66 +297,74 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
+    function collectKebap(_event: Event): void {
+
+
+        for (let x: number = kebapContainer = containerCapacity; x--;) {
+
+
+            console.log();
+
+        }
+
+
+    }
+    // Containerstand anzeigen
+
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
+        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + kebapContainer + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
     }
 
+    // Mitarbeiter zeichnen lassen
     function drawStaff(): void {
-
-
 
         for (let i: number = 0; i < staffAmount; i++) {
             let staff: Staff = new Staff(new Vector(-100, 0));
 
-
             staffs.push(staff);
 
-
-
         }
+
         for (let staff of staffs) {
             staff.draw();
+
         }
-        console.log(staffs);
-
-
 
     }
+  
 
-
+    // Kunden zeichnen lassen
     function drawCustomer(): void {
 
+        let interval: number = setInterval(
+
+            function (): void {
 
 
-        for (let i: number = 0; i < customerAmount; i++) {
 
-            let customer: Customer = new Customer(new Vector(-100, 0));
-
-
-            customers.push(customer);
+                let customer: Customer = new Customer(new Vector(-100, 0));
 
 
-        }
-        for (let customer of customers) {
+                customers.push(customer);
+                
+                customer.draw();
 
-            setInterval(
-                function (): void {
-                    customer.draw();
-                }, 2000);
-            
-        }
-        console.log(staffs);
+                if (customers.length == customerAmount) {
+                    customers.length = 0;
+                    clearInterval(interval);
+                }
+
+            }, 2000);
+
 
     }
 
 
-
+    // Bestellung anzeigen lassen
     function getOrder(): void {
-
-
 
         let object1: number = Math.floor(Math.random() * basis.length);
         let object2: number = Math.floor(Math.random() * topping.length);
@@ -331,20 +372,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let object4: number = Math.floor(Math.random() * word.length);
 
 
-
-
-        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " +  word[object4] + " " + sauce[object3] + "." + " " + "Thank you." ];
+        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
 
-
-
-
-
     }
-
-
 
 
 

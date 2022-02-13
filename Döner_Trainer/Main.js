@@ -17,6 +17,8 @@ var EIA2_Endabgabe_Döner_Trainer;
     let storageCapacity;
     let containerCapacity;
     let staffRestperiod;
+    //let staffChoice: number;
+    let kebapContainer = containerCapacity;
     let ingredients = [];
     let staffs = [];
     let customers = [];
@@ -28,8 +30,10 @@ var EIA2_Endabgabe_Döner_Trainer;
     //let imgData: ImageData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
+        // start Button deklarieren, prepareGame aufrufen
         let startButton = document.querySelector("#startButton");
         startButton.addEventListener("click", prepareGame);
+        //Elemente verstecken
         document.getElementById("gamefield").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
@@ -53,6 +57,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         let form = document.querySelector("form");
         let body = document.querySelector("body");
         body.removeChild(form);
+        //Werte aus dem FormData als Variablen speichern
         staffAmount = Number(formData.get("staffamount"));
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
@@ -63,6 +68,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
     }
     function buildGamescreen() {
+        //Elemente anzeigen
         document.getElementById("gamefield").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
@@ -81,6 +87,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("cuttingboard").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
+        //calls
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
@@ -95,24 +102,49 @@ var EIA2_Endabgabe_Döner_Trainer;
         drawLahmacun();
         showContainerCapacity();
         drawStaff();
-        drawCustomer();
         getOrder();
+        //Button deklarieren für Ingredients
+        //let finishorder: HTMLButtonElement;
+        //let kuttingboard: HTMLButtonElement;
+        let kebap = document.querySelector("#kebap");
+        //let yufka: HTMLButtonElement;
+        //let lahmacun: HTMLButtonElement;
+        //let corn: HTMLButtonElement;
+        //let sauce: HTMLButtonElement;
+        //let salad: HTMLButtonElement;
+        //let cabbage: HTMLButtonElement;
+        //let onion: HTMLButtonElement;
+        //let tomato: HTMLButtonElement;
+        //click Listener installieren
+        //finishorder.addEventListener("click", compareOrder);
+        //kuttingboard.addEventListener("click", cutIngredients);
+        kebap.addEventListener("click", collectKebap);
+        //yufka.addEventListener("click", collectYufke);
+        //lahmacun.addEventListener("click", collectLahmacun);
+        //corn.addEventListener("click", collectCorn);
+        //sauce.addEventListener("click", collectSauce);
+        //salad.addEventListener("click", collectSalad);
+        //cabbage.addEventListener("click", collectCabbage);
+        //onion.addEventListener("click", collectOnion);
+        //tomato.addEventListener("click", collectTomato);
+        console.log();
         window.setInterval(update, 20);
+        setInterval(drawCustomer, 30000);
     }
     function drawCounter(_position) {
-        //draw counter
+        //Theke zeichnen
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#8B4513";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y, 800, 150);
     }
     function drawCuttingboard(_position) {
-        //draw cuttingboard
+        //Schneidebrett zeichnen
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#8B4513";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y, 200, 100);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#B9773A";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x + 25, _position.y + 9, 150, 80);
-        //draw Knife
+        //Messer zeichnen
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#C0C0C0";
         EIA2_Endabgabe_Döner_Trainer.crc2.arc(897, 115, 100, 0, 0.25 * Math.PI);
@@ -120,7 +152,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.closePath();
     }
     function drawContainer(_position) {
-        //draw container
+        //Container zeichnen
         EIA2_Endabgabe_Döner_Trainer.crc2.fillStyle = "#696969";
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x, _position.y, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y, 65, 65);
@@ -129,7 +161,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 100, _position.y + 85, 65, 65);
         EIA2_Endabgabe_Döner_Trainer.crc2.fillRect(_position.x - 200, _position.y + 85, 65, 65);
     }
-    // draw Ingredients
+    //alle Zutaten zeichnen
     function drawSalad() {
         let salad = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 470), storageCapacity, containerCapacity);
         let salad2 = new EIA2_Endabgabe_Döner_Trainer.Salad(new EIA2_Endabgabe_Döner_Trainer.Vector(-70, -230), storageCapacity, containerCapacity);
@@ -178,12 +210,19 @@ var EIA2_Endabgabe_Döner_Trainer;
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         //crc2.putImageData(imgData, 0, 0);
     }
+    function collectKebap(_event) {
+        for (let x = kebapContainer = containerCapacity; x--;) {
+            console.log();
+        }
+    }
+    // Containerstand anzeigen
     function showContainerCapacity() {
         let storageDiv = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + storageCapacity + " kg Kebap bread " + "<br>" + storageCapacity + " kg Yufka bread" + "<br>" + storageCapacity + " kg Lahmacun bread " + "<br>" + storageCapacity + " kg salad" + "<br>" + storageCapacity + " kg corn" + "<br>" + storageCapacity + " kg tomato" + "<br>" + storageCapacity + " kg sauce" + "<br>" + storageCapacity + " kg onion" + "<br>" + storageCapacity + " kg red cabbage" + "<br>";
         let containerDiv = document.getElementById("containerstorage");
-        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + containerCapacity + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
+        containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + kebapContainer + " g Kebap bread " + "<br>" + containerCapacity + " g Yufka bread" + "<br>" + containerCapacity + " g Lahmacun bread " + "<br>" + containerCapacity + " g salad" + "<br>" + containerCapacity + " g corn" + "<br>" + containerCapacity + " g tomato" + "<br>" + containerCapacity + " g sauce" + "<br>" + containerCapacity + " g onion" + "<br>" + containerCapacity + " g red cabbage" + "<br>";
     }
+    // Mitarbeiter zeichnen lassen
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {
             let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
@@ -192,20 +231,20 @@ var EIA2_Endabgabe_Döner_Trainer;
         for (let staff of staffs) {
             staff.draw();
         }
-        console.log(staffs);
     }
+    // Kunden zeichnen lassen
     function drawCustomer() {
-        for (let i = 0; i < customerAmount; i++) {
+        let interval = setInterval(function () {
             let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
             customers.push(customer);
-        }
-        for (let customer of customers) {
-            setInterval(function () {
-                customer.draw();
-            }, 2000);
-        }
-        console.log(staffs);
+            customer.draw();
+            if (customers.length == customerAmount) {
+                customers.length = 0;
+                clearInterval(interval);
+            }
+        }, 2000);
     }
+    // Bestellung anzeigen lassen
     function getOrder() {
         let object1 = Math.floor(Math.random() * basis.length);
         let object2 = Math.floor(Math.random() * topping.length);

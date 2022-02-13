@@ -200,3 +200,40 @@
         border-color: lightslategray;
         font-family: initial;
     }
+    
+    .progress {
+        position: relative;
+        height: 10px;
+        width: 500px;
+        border: 2px solid darkgray;
+        border-radius: 15px;
+    }
+    
+    .progress .color {
+        position: absolute;
+        background-color: lightblue;
+        width: 0px;
+        height: 10px;
+        border-radius: 5px;
+        animation: progress 320s;
+    }
+    
+    @keyframes progress {
+        0% {
+            width: 100%;
+        }
+        25% {
+            width: 85%;
+        }
+        50% {
+            width: 75%;
+        }
+        75% {
+            width: 25%;
+        }
+        100% {
+            width: 0%;
+        }
+    }
+    
+    ;

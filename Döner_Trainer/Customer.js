@@ -198,14 +198,6 @@ var EIA2_Endabgabe_Döner_Trainer;
             if (this.position.y > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height)
                 this.position.y -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
         }
-        talk() {
-            let kebap = ["flatbread", "vegan meat", "salad", "red cabbage"];
-            let lahmacun = ["flatbread", "vegan mincemeat", "tomatosauce"];
-            let yufka = ["thin flatbread", "vegan meat", "salad", "herb"];
-            let toppings = ["corn", "tomatoes", "onions"];
-            let sauces = ["garlic sauce", "hot sauce", "yoghurt sauce"];
-            let words = ["with", "without"];
-        }
     }
     EIA2_Endabgabe_Döner_Trainer.Customer = Customer;
 })(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));

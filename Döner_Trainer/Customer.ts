@@ -213,13 +213,13 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 this.position.y -= crc2.canvas.height;
         }
 
-        talk(): void {
+        /*talk(): void {
             let kebap: string[] = ["flatbread", "vegan meat", "salad", "red cabbage"];
             let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
             let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
             let toppings: string[] = ["corn", "tomatoes", "onions"];
             let sauces: string[] = ["garlic sauce", "hot sauce", "yoghurt sauce"];
             let words: string[] = ["with", "without"];
-        }
+        } */
     }
 }
