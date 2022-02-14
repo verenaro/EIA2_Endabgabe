@@ -184,17 +184,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
         }
         move(_timeslice) {
-            let offset = this.velocity.copy();
-            offset.scale(_timeslice);
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
-            if (this.position.x > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width)
-                this.position.x -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
-            if (this.position.y > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height)
-                this.position.y -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
+            //
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Customer = Customer;

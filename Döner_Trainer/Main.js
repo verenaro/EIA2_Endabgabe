@@ -53,7 +53,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("sauce").hidden = true;
         document.getElementById("cuttingboard").hidden = true;
         document.getElementById("selectedingredients").hidden = true;
-        document.getElementById("overallsatisfaction").hidden = true;
+        document.getElementById("soldmeals").hidden = true;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
@@ -104,7 +104,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("sauce").hidden = false;
         document.getElementById("cuttingboard").hidden = false;
         document.getElementById("selectedingredients").hidden = false;
-        document.getElementById("overallsatisfaction").hidden = false;
+        document.getElementById("soldmeals").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         //calls
