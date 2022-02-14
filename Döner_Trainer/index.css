@@ -228,6 +228,17 @@
         color: lightblue;
     }
     
+    #selectedingredients {
+        background-color: lightgrey;
+        width: 200px;
+        height: 150px;
+        margin-left: 420px;
+        margin-top: 300px;
+        border: lightblue dotted;
+        color: white;
+        font-family: initial;
+    }
+    
     @keyframes progress {
         0% {
             width: 100%;

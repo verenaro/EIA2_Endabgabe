@@ -30,7 +30,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let basis: string[] = ["Kebap", "Yufka", "Lahmacun"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
-    let word: string[] = ["with", "without"];
+    let word: string[] = ["with"];
 
     //neue Containerwerte
 
@@ -80,6 +80,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("happiness").hidden = true;
         document.getElementById("color").hidden = true;
         document.getElementById("progress").hidden = true;
+        document.getElementById("selectedingredients").hidden = true;
 
     }
 
@@ -147,6 +148,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("happiness").hidden = false;
         document.getElementById("color").hidden = false;
         document.getElementById("progress").hidden = false;
+        document.getElementById("selectedingredients").hidden = false;
 
 
 
@@ -169,15 +171,16 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
         drawStaff();
         getOrder();
+        selectedIngredients();
 
 
 
 
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
-        //let yufka: HTMLButtonElement;
-        //let lahmacun: HTMLButtonElement;
+        let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
+        let yufka: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#yufka");;
+        let lahmacun: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#lahmacun");
         let corn: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#corn");
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
         let cabbage: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cabbage");
@@ -185,6 +188,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let tomato: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#tomato");
         let refill: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#cuttingboard");
         let reorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#reorder");
+        let sauce: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#sauce");
 
 
 
@@ -192,9 +196,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
-        //kebap.addEventListener("click", collectKebap);
-        //yufka.addEventListener("click", collectYufke);
-        //lahmacun.addEventListener("click", collectLahmacun);
+        kebap.addEventListener("click", updateKebap);
+        yufka.addEventListener("click", updateYufka);
+        lahmacun.addEventListener("click", updateLahmacun);
         corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
         cabbage.addEventListener("click", updateCabbage);
@@ -202,6 +206,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         tomato.addEventListener("click", updateTomato);
         refill.addEventListener("click", refillContainer);
         reorder.addEventListener("click", reorderIngredients);
+        sauce.addEventListener("click", updateSauce);
 
         console.log(onion);
 
@@ -252,10 +257,14 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateSalad(_event: Event): void {
 
+        let element: string = " salad, ";
+
         storageLeft.salad -= 30;
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
         }
+
+        document.getElementById("selectedingredients").innerHTML += element;
 
         ingredientLeft.salad -= storageLeft.salad;
 
@@ -265,11 +274,14 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateCabbage(_event: Event): void {
 
+        let element: string = " cabbage, ";
+
         storageLeft.cabbage -= 30;
 
         if (storageLeft.cabbage <= 0) {
             alert("please cut new cabbage");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
 
         ingredientLeft.cabbage -= storageLeft.cabbage;
 
@@ -279,11 +291,15 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateOnion(_event: Event): void {
 
+        let element: string = " onion, ";
+
         storageLeft.onion -= 20;
 
         if (storageLeft.onion <= 0) {
             alert("please cut new onions");
         }
+
+        document.getElementById("selectedingredients").innerHTML += element;
 
         ingredientLeft.onion -= storageLeft.onion;
 
@@ -292,11 +308,15 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
     function updateCorn(_event: Event): void {
 
+        let element: string = " corn, ";
+
         storageLeft.corn -= 25;
 
         if (storageLeft.corn <= 0) {
             alert("please refill corn");
         }
+
+        document.getElementById("selectedingredients").innerHTML += element;
 
         ingredientLeft.corn -= storageLeft.corn;
 
@@ -307,16 +327,44 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateTomato(_event: Event): void {
 
+        let element: string = " tomato, ";
+
         storageLeft.tomato -= 40;
 
         if (storageLeft.tomato <= 0) {
             alert("please refill tomatoes");
         }
 
+        document.getElementById("selectedingredients").innerHTML += element;
+
         ingredientLeft.tomato -= storageLeft.tomato;
 
         showContainerCapacity();
 
+    }
+    function updateKebap(_event: Event): void {
+        let element: string = " Kebap with vegan meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+
+    function updateYufka(_event: Event): void  {
+        let element: string = " Yufka with vegan meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+
+    function updateLahmacun(_event: Event): void  {
+        let element: string = " Lahmacun with vegan minced meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+
+    function updateSauce(_event: Event): void  {
+        let element: string = " sauce, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+
+    function selectedIngredients(): void {
+        let selectDiv: HTMLElement = document.getElementById("selectedingredients");
+        selectDiv.innerHTML += "<br>" + " ";
     }
 
 

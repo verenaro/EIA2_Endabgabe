@@ -23,7 +23,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let basis = ["Kebap", "Yufka", "Lahmacun"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
-    let word = ["with", "without"];
+    let word = ["with"];
     let storageLeft;
     let ingredientLeft;
     //let words: string[] = ["with", "without"];
@@ -53,6 +53,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("happiness").hidden = true;
         document.getElementById("color").hidden = true;
         document.getElementById("progress").hidden = true;
+        document.getElementById("selectedingredients").hidden = true;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
@@ -105,6 +106,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("happiness").hidden = false;
         document.getElementById("color").hidden = false;
         document.getElementById("progress").hidden = false;
+        document.getElementById("selectedingredients").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         //calls
@@ -123,11 +125,13 @@ var EIA2_Endabgabe_Döner_Trainer;
         showContainerCapacity();
         drawStaff();
         getOrder();
+        selectedIngredients();
         //Button deklarieren für Ingredients
         //let finishorder: HTMLButtonElement;
-        //let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
-        //let yufka: HTMLButtonElement;
-        //let lahmacun: HTMLButtonElement;
+        let kebap = document.querySelector("#kebap");
+        let yufka = document.querySelector("#yufka");
+        ;
+        let lahmacun = document.querySelector("#lahmacun");
         let corn = document.querySelector("#corn");
         let salad = document.querySelector("#salad");
         let cabbage = document.querySelector("#cabbage");
@@ -135,12 +139,13 @@ var EIA2_Endabgabe_Döner_Trainer;
         let tomato = document.querySelector("#tomato");
         let refill = document.querySelector("#cuttingboard");
         let reorder = document.querySelector("#reorder");
+        let sauce = document.querySelector("#sauce");
         //click Listener installieren
         //finishorder.addEventListener("click", compareOrder);
         //kuttingboard.addEventListener("click", cutIngredients);
-        //kebap.addEventListener("click", collectKebap);
-        //yufka.addEventListener("click", collectYufke);
-        //lahmacun.addEventListener("click", collectLahmacun);
+        kebap.addEventListener("click", updateKebap);
+        yufka.addEventListener("click", updateYufka);
+        lahmacun.addEventListener("click", updateLahmacun);
         corn.addEventListener("click", updateCorn);
         salad.addEventListener("click", updateSalad);
         cabbage.addEventListener("click", updateCabbage);
@@ -148,6 +153,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         tomato.addEventListener("click", updateTomato);
         refill.addEventListener("click", refillContainer);
         reorder.addEventListener("click", reorderIngredients);
+        sauce.addEventListener("click", updateSauce);
         console.log(onion);
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
@@ -184,44 +190,74 @@ var EIA2_Endabgabe_Döner_Trainer;
         showContainerCapacity();
     }
     function updateSalad(_event) {
+        let element = " salad, ";
         storageLeft.salad -= 30;
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.salad -= storageLeft.salad;
         showContainerCapacity();
     }
     function updateCabbage(_event) {
+        let element = " cabbage, ";
         storageLeft.cabbage -= 30;
         if (storageLeft.cabbage <= 0) {
             alert("please cut new cabbage");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.cabbage -= storageLeft.cabbage;
         showContainerCapacity();
     }
     function updateOnion(_event) {
+        let element = " onion, ";
         storageLeft.onion -= 20;
         if (storageLeft.onion <= 0) {
             alert("please cut new onions");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.onion -= storageLeft.onion;
         showContainerCapacity();
     }
     function updateCorn(_event) {
+        let element = " corn, ";
         storageLeft.corn -= 25;
         if (storageLeft.corn <= 0) {
             alert("please refill corn");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.corn -= storageLeft.corn;
         showContainerCapacity();
     }
     function updateTomato(_event) {
+        let element = " tomato, ";
         storageLeft.tomato -= 40;
         if (storageLeft.tomato <= 0) {
             alert("please refill tomatoes");
         }
+        document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.tomato -= storageLeft.tomato;
         showContainerCapacity();
+    }
+    function updateKebap(_event) {
+        let element = " Kebap with vegan meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+    function updateYufka(_event) {
+        let element = " Yufka with vegan meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+    function updateLahmacun(_event) {
+        let element = " Lahmacun with vegan minced meat, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+    function updateSauce(_event) {
+        let element = " sauce, ";
+        document.getElementById("selectedingredients").innerHTML += element;
+    }
+    function selectedIngredients() {
+        let selectDiv = document.getElementById("selectedingredients");
+        selectDiv.innerHTML += "<br>" + " ";
     }
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
