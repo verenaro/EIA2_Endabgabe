@@ -1,8 +1,8 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Ingredient {
-        position: Vector;
-        amount: number;
-        containeramount: number;
+        protected position: Vector;
+        protected amount: number;
+        protected containeramount: number;
 
 
         constructor(_position: Vector, _amount: number, _containeramount: number) {

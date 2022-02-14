@@ -391,7 +391,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 document.getElementById("overallsatisfaction").innerHTML += i;
 
             }
-            
+
             getOrder();
         }
     }
@@ -402,7 +402,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function drawStaff(): void {
 
         for (let i: number = 0; i < staffAmount; i++) {
-            let staff: Staff = new Staff(new Vector(-100, 0));
+            let staff: Staff = new Staff(new Vector(-100, 0), new Vector(0, 0));
 
             staffs.push(staff);
 
@@ -425,7 +425,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
 
-                let customer: Customer = new Customer(new Vector(-100, 0));
+                let customer: Customer = new Customer(new Vector(-100, 0), new Vector(0, 0));
 
 
                 customers.push(customer);

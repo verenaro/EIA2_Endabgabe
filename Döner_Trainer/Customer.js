@@ -2,8 +2,8 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Customer extends EIA2_Endabgabe_Döner_Trainer.Person {
-        constructor(_position) {
-            super(_position);
+        constructor(_position, _velocity) {
+            super(_position, _velocity);
             this.velocity = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
         }
         draw() {
@@ -182,9 +182,6 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
-        }
-        mood() {
-            //console.log("mood")
         }
         move(_timeslice) {
             let offset = this.velocity.copy();

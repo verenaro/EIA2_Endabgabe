@@ -1,11 +1,11 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Corn extends Ingredient {
 
-        constructor(_position: Vector, _amount: number, _containeramount:number) {
-            super(_position,_amount, _containeramount);
+        constructor(_position: Vector, _amount: number, _containeramount: number) {
+            super(_position, _amount, _containeramount);
         }
 
-        draw(): void {
+        public draw(): void {
             crc2.translate(this.position.x, this.position.y);
             crc2.beginPath();
             crc2.fillStyle = "#FFD700";

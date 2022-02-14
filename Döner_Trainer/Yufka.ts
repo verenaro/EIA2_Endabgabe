@@ -5,7 +5,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             super(_position, _amount, _containeramount);
         }
 
-        draw(): void {
+        public draw(): void {
             crc2.fillStyle = "#bfa290";
             crc2.fillRect(this.position.x, this.position.y, 80, 30);
             crc2.beginPath();

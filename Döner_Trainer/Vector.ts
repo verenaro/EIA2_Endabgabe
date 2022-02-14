@@ -30,7 +30,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             return new Vector(this.x, this.y);
         }
 
-        random(_minLength: number, _maxLength: number): void {
+        public random(_minLength: number, _maxLength: number): void {
             let length: number = _minLength + Math.random() * (_maxLength - _minLength);
             let direction: number = Math.random() * 2 * Math.PI;
 

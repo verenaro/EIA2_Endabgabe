@@ -5,7 +5,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             super(_position, _amount, _containeramount);
         }
 
-        draw(): void {
+        public draw(): void {
             crc2.beginPath();
             crc2.save();
             crc2.translate(this.position.x, this.position.y);

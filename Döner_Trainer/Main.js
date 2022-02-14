@@ -280,7 +280,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {
-            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
+            let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0), new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
             staffs.push(staff);
         }
         for (let staff of staffs) {
@@ -290,7 +290,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     // Kunden zeichnen lassen
     function drawCustomer() {
         let interval = setInterval(function () {
-            let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0));
+            let customer = new EIA2_Endabgabe_Döner_Trainer.Customer(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0), new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
             customers.push(customer);
             customer.draw();
             if (customers.length == customerAmount) {

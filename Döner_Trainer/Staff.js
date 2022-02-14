@@ -2,8 +2,8 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Staff extends EIA2_Endabgabe_Döner_Trainer.Person {
-        constructor(_position) {
-            super(_position);
+        constructor(_position, _velocity) {
+            super(_position, _velocity);
             if (_position)
                 this.position = _position;
             else
@@ -190,9 +190,6 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.fill();
             EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
-        }
-        mood() {
-            console.log("mood");
         }
         move() {
             console.log("move");

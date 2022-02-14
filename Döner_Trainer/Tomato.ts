@@ -6,7 +6,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         }
 
-        draw(): void {
+        public draw(): void {
             crc2.translate(this.position.x, this.position.y);
             crc2.beginPath();
             crc2.fillStyle = "red";

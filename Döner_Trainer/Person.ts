@@ -2,11 +2,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     export abstract class Person {
 
-        public position: Vector;
         public velocity: Vector;
-        public type: string;
+        public position: Vector;
+        
 
-        constructor(_position: Vector) {
+        constructor(_position: Vector, _velocity: Vector) {
             if (_position)
                 this.position = _position.copy();
             else
@@ -15,11 +15,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
         }
+
         public abstract move(_timeslice: number): void;
 
         public abstract draw(): void;
 
-        public abstract mood(): void;
 
 
     }

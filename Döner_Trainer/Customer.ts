@@ -1,12 +1,12 @@
 namespace EIA2_Endabgabe_Döner_Trainer {
     export class Customer extends Person {
 
-        constructor(_position: Vector) {
-            super(_position);
+        constructor(_position: Vector, _velocity: Vector) {
+            super(_position, _velocity);
             this.velocity = new Vector(0, 0);
         }
 
-        draw(): void {
+        public draw(): void {
             //happy customer
             //Body
             crc2.beginPath();
@@ -69,7 +69,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         }
 
-        mad(): void {
+        public mad(): void {
             // mad customer
             //Body
             crc2.beginPath();
@@ -130,7 +130,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         }
 
-        stressed(): void {
+        public stressed(): void {
             //stressed customer
             //Body
             crc2.beginPath();
@@ -193,9 +193,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.restore();
         }
 
-        mood(): void {
-            //console.log("mood")
-        }
+       
 
         public move(_timeslice: number): void {
 
@@ -213,13 +211,5 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 this.position.y -= crc2.canvas.height;
         }
 
-        /*talk(): void {
-            let kebap: string[] = ["flatbread", "vegan meat", "salad", "red cabbage"];
-            let lahmacun: string[] = ["flatbread", "vegan mincemeat", "tomatosauce"];
-            let yufka: string[] = ["thin flatbread", "vegan meat", "salad", "herb"];
-            let toppings: string[] = ["corn", "tomatoes", "onions"];
-            let sauces: string[] = ["garlic sauce", "hot sauce", "yoghurt sauce"];
-            let words: string[] = ["with", "without"];
-        } */
     }
 }

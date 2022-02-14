@@ -2,10 +2,9 @@
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     class Person {
-        position;
         velocity;
-        type;
-        constructor(_position) {
+        position;
+        constructor(_position, _velocity) {
             if (_position)
                 this.position = _position.copy();
             else
