@@ -20,6 +20,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let ingredients = [];
     let staffs = [];
     let customers = [];
+    let order = [];
     let basis = ["Kebap", "Yufka", "Lahmacun"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
@@ -127,10 +128,9 @@ var EIA2_Endabgabe_Döner_Trainer;
         getOrder();
         selectedIngredients();
         //Button deklarieren für Ingredients
-        //let finishorder: HTMLButtonElement;
+        //let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
         let kebap = document.querySelector("#kebap");
         let yufka = document.querySelector("#yufka");
-        ;
         let lahmacun = document.querySelector("#lahmacun");
         let corn = document.querySelector("#corn");
         let salad = document.querySelector("#salad");
@@ -191,6 +191,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateSalad(_event) {
         let element = " salad, ";
+        order.push(element);
         storageLeft.salad -= 30;
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
@@ -201,6 +202,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateCabbage(_event) {
         let element = " cabbage, ";
+        order.push(element);
         storageLeft.cabbage -= 30;
         if (storageLeft.cabbage <= 0) {
             alert("please cut new cabbage");
@@ -211,6 +213,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateOnion(_event) {
         let element = " onion, ";
+        order.push(element);
         storageLeft.onion -= 20;
         if (storageLeft.onion <= 0) {
             alert("please cut new onions");
@@ -221,6 +224,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateCorn(_event) {
         let element = " corn, ";
+        order.push(element);
         storageLeft.corn -= 25;
         if (storageLeft.corn <= 0) {
             alert("please refill corn");
@@ -231,6 +235,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateTomato(_event) {
         let element = " tomato, ";
+        order.push(element);
         storageLeft.tomato -= 40;
         if (storageLeft.tomato <= 0) {
             alert("please refill tomatoes");
@@ -241,24 +246,32 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateKebap(_event) {
         let element = " Kebap with vegan meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
     function updateYufka(_event) {
         let element = " Yufka with vegan meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
     function updateLahmacun(_event) {
         let element = " Lahmacun with vegan minced meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
     function updateSauce(_event) {
         let element = " sauce, ";
+        order.push(element);
+        console.log(order);
         document.getElementById("selectedingredients").innerHTML += element;
     }
     function selectedIngredients() {
         let selectDiv = document.getElementById("selectedingredients");
         selectDiv.innerHTML += "<br>" + " ";
     }
+    /*function compareOrder(_event: Event): void {
+
+    }*/
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {

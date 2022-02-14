@@ -26,6 +26,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
+    let order: string[] = [];
+    
 
     let basis: string[] = ["Kebap", "Yufka", "Lahmacun"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
@@ -177,9 +179,9 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
         //Button deklarieren für Ingredients
-        //let finishorder: HTMLButtonElement;
+        //let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
         let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
-        let yufka: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#yufka");;
+        let yufka: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#yufka");
         let lahmacun: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#lahmacun");
         let corn: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#corn");
         let salad: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#salad");
@@ -259,6 +261,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         let element: string = " salad, ";
 
+        order.push(element);
+
         storageLeft.salad -= 30;
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
@@ -275,6 +279,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function updateCabbage(_event: Event): void {
 
         let element: string = " cabbage, ";
+        order.push(element);
 
         storageLeft.cabbage -= 30;
 
@@ -292,6 +297,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function updateOnion(_event: Event): void {
 
         let element: string = " onion, ";
+        order.push(element);
 
         storageLeft.onion -= 20;
 
@@ -309,6 +315,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function updateCorn(_event: Event): void {
 
         let element: string = " corn, ";
+        order.push(element);
 
         storageLeft.corn -= 25;
 
@@ -328,6 +335,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function updateTomato(_event: Event): void {
 
         let element: string = " tomato, ";
+        order.push(element);
 
         storageLeft.tomato -= 40;
 
@@ -339,26 +347,35 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         ingredientLeft.tomato -= storageLeft.tomato;
 
+
+
         showContainerCapacity();
 
     }
     function updateKebap(_event: Event): void {
         let element: string = " Kebap with vegan meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
 
-    function updateYufka(_event: Event): void  {
+    function updateYufka(_event: Event): void {
         let element: string = " Yufka with vegan meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
 
-    function updateLahmacun(_event: Event): void  {
+    function updateLahmacun(_event: Event): void {
         let element: string = " Lahmacun with vegan minced meat, ";
+        order.push(element);
         document.getElementById("selectedingredients").innerHTML += element;
     }
 
-    function updateSauce(_event: Event): void  {
+    function updateSauce(_event: Event): void {
         let element: string = " sauce, ";
+        order.push(element);
+        console.log(order);
+        
+
         document.getElementById("selectedingredients").innerHTML += element;
     }
 
@@ -366,6 +383,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let selectDiv: HTMLElement = document.getElementById("selectedingredients");
         selectDiv.innerHTML += "<br>" + " ";
     }
+
+    /*function compareOrder(_event: Event): void {
+
+    }*/
 
 
 
