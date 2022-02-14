@@ -8,28 +8,25 @@ Quellen: Zusammenarbeit mit Neslisah Koc
 var EIA2_Endabgabe_Döner_Trainer;
 (function (EIA2_Endabgabe_Döner_Trainer) {
     let formData;
-    //let gameStart: boolean = false;
-    //let gameTimer: number;
-    //let countDown: number;
-    //let time: HTMLDivElement;
     let staffAmount;
     let customerAmount;
     let storageCapacity;
     let containerCapacity;
-    let staffRestperiod;
-    //let staffChoice: number;
-    let overallsatisfaction = 0;
+    //let staffRestperiod: number;
+    let soldmeals = 0;
     let ingredients = [];
     let staffs = [];
     let customers = [];
+    //Arrays für Bestellung
     let order = [];
     let customerorder = [];
+    //Strings für Bestellung
     let basis = ["Kebap with vegan meat", "Yufka with vegan meat", "Lahmacun with vegan minced meat"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
     let storageLeft;
     let ingredientLeft;
-    //let imgData: ImageData;
+    let imgData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         // start Button deklarieren, prepareGame aufrufen
@@ -57,7 +54,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
-        console.log(formData);
+        //console.log(formData);
         let form = document.querySelector("form");
         let body = document.querySelector("body");
         body.removeChild(form);
@@ -66,7 +63,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
-        staffRestperiod = Number(formData.get("restperiod"));
+        //staffRestperiod = Number(formData.get("restperiod"));
         storageLeft = {
             salad: containerCapacity,
             cabbage: containerCapacity,
@@ -82,7 +79,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             tomato: storageCapacity
         };
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
-        console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
+        //console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
         buildGamescreen();
     }
     function buildGamescreen() {
@@ -105,6 +102,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("cuttingboard").hidden = false;
         document.getElementById("selectedingredients").hidden = false;
         document.getElementById("soldmeals").hidden = false;
+        //Canvas auswählen
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         //calls
@@ -139,7 +137,6 @@ var EIA2_Endabgabe_Döner_Trainer;
         let sauce = document.querySelector("#sauce");
         //click Listener installieren
         finishorder.addEventListener("click", compareOrder);
-        //cuttingboard.addEventListener("click", cutIngredients);
         kebap.addEventListener("click", updateKebap);
         yufka.addEventListener("click", updateYufka);
         lahmacun.addEventListener("click", updateLahmacun);
@@ -151,13 +148,16 @@ var EIA2_Endabgabe_Döner_Trainer;
         refill.addEventListener("click", refillContainer);
         reorder.addEventListener("click", reorderIngredients);
         sauce.addEventListener("click", updateSauce);
-        console.log(onion);
+        //console.log(onion);
         window.setInterval(update, 20);
         setInterval(drawCustomer, 60000);
     }
     function update() {
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        //crc2.putImageData(imgData, 0, 0);
+        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
+        for (let staff of staffs) {
+            staff.move(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), new EIA2_Endabgabe_Döner_Trainer.Vector(200, 300), 5);
+        }
     }
     // Containerstand anzeigen
     function showContainerCapacity() {
@@ -187,6 +187,8 @@ var EIA2_Endabgabe_Döner_Trainer;
         showContainerCapacity();
     }
     function updateSalad(_event) {
+        let x = _event.offsetX;
+        let y = _event.offsetY;
         let element = " salad, ";
         order.push(element);
         storageLeft.salad -= 30;
@@ -195,6 +197,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         }
         document.getElementById("selectedingredients").innerHTML += element;
         ingredientLeft.salad -= storageLeft.salad;
+        staffs[0].move(new EIA2_Endabgabe_Döner_Trainer.Vector(x, y), new EIA2_Endabgabe_Döner_Trainer.Vector(200, 300), 20);
         showContainerCapacity();
     }
     function updateCabbage(_event) {
@@ -270,7 +273,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         if (order.length != customerorder.length) {
             document.getElementById("order").innerHTML = "order: ";
             document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
-            for (let i = overallsatisfaction; i++;) {
+            for (let i = soldmeals; i++;) {
                 i.toString();
                 document.getElementById("overallsatisfaction").innerHTML += i;
             }

@@ -4,22 +4,19 @@ Matrikel: 270156
 Datum: 
 Quellen: Zusammenarbeit mit Neslisah Koc
 */
+
+
 namespace EIA2_Endabgabe_Döner_Trainer {
 
     let formData: FormData;
-    //let gameStart: boolean = false;
-    //let gameTimer: number;
-    //let countDown: number;
-    //let time: HTMLDivElement;
     let staffAmount: number;
     let customerAmount: number;
     let storageCapacity: number;
     let containerCapacity: number;
-    let staffRestperiod: number;
-    //let staffChoice: number;
-    let overallsatisfaction: number = 0;
-
-
+    //let staffRestperiod: number;
+    let soldmeals: number = 0;
+    //let StaffisMad: boolean = false;
+    //let CustomerisMad: boolean = false;
 
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement | null;
@@ -27,17 +24,17 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
+
+    //Arrays für Bestellung
     let order: string[] = [];
     let customerorder: string[] = [];
 
-
+    //Strings für Bestellung
     let basis: string[] = ["Kebap with vegan meat", "Yufka with vegan meat", "Lahmacun with vegan minced meat"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
 
     //neue Containerwerte
-
-
     interface Storage {
         salad: number;
         cabbage: number;
@@ -50,8 +47,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let storageLeft: Storage;
     let ingredientLeft: Storage;
 
-
-    //let imgData: ImageData;
+    let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
 
@@ -87,7 +83,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function prepareGame(_event: Event): void {
 
         formData = new FormData(document.forms[0]);
-        console.log(formData);
+        //console.log(formData);
 
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
         let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
@@ -99,7 +95,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
-        staffRestperiod = Number(formData.get("restperiod"));
+        //staffRestperiod = Number(formData.get("restperiod"));
 
         storageLeft = {
             salad: containerCapacity,
@@ -118,7 +114,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         };
 
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
-        console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
+        //console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
 
         buildGamescreen();
 
@@ -147,8 +143,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("selectedingredients").hidden = false;
         document.getElementById("soldmeals").hidden = false;
 
-
-
+        //Canvas auswählen
         let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
         crc2 = canvas.getContext("2d")!;
 
@@ -171,8 +166,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         selectedIngredients();
 
 
-
-
         //Button deklarieren für Ingredients
         let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
         let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
@@ -188,11 +181,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let sauce: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#sauce");
 
 
-
-
         //click Listener installieren
         finishorder.addEventListener("click", compareOrder);
-        //cuttingboard.addEventListener("click", cutIngredients);
         kebap.addEventListener("click", updateKebap);
         yufka.addEventListener("click", updateYufka);
         lahmacun.addEventListener("click", updateLahmacun);
@@ -205,7 +195,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         reorder.addEventListener("click", reorderIngredients);
         sauce.addEventListener("click", updateSauce);
 
-        console.log(onion);
+        //console.log(onion);
 
         window.setInterval(update, 20);
 
@@ -216,8 +206,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function update(): void {
 
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        //crc2.putImageData(imgData, 0, 0);
+        crc2.putImageData(imgData, 0, 0);
 
+        for (let staff of staffs) {
+            staff.move(new Vector(0, 0), new Vector(200, 300), 5);
+
+        }
 
 
     }
@@ -226,6 +220,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + ingredientLeft.onion + " g onions " + "<br>" + ingredientLeft.corn + " g of corn" + "<br>" + ingredientLeft.tomato + " g of tomatoes " + "<br>" + ingredientLeft.salad + " g of salad" + "<br>" + ingredientLeft.cabbage + " g of cabbage" + "<br>";
+
         let containerDiv: HTMLElement = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
@@ -241,7 +236,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
-    function refillContainer(_event: Event): void {
+    function refillContainer(_event: MouseEvent): void {
         storageLeft = {
             salad: containerCapacity,
             cabbage: containerCapacity,
@@ -252,13 +247,18 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
-    function updateSalad(_event: Event): void {
+    function updateSalad(_event: MouseEvent): void {
+
+        let x: number = _event.offsetX;
+        let y: number = _event.offsetY;
+
 
         let element: string = " salad, ";
 
         order.push(element);
 
         storageLeft.salad -= 30;
+
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
         }
@@ -267,6 +267,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         ingredientLeft.salad -= storageLeft.salad;
 
+        staffs[0].move(new Vector(x, y), new Vector(200, 300), 20);
 
         showContainerCapacity();
     }
@@ -342,11 +343,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         ingredientLeft.tomato -= storageLeft.tomato;
 
-
-
         showContainerCapacity();
 
     }
+
     function updateKebap(_event: Event): void {
         let element: string = " Kebap with vegan meat, ";
         order.push(element);
@@ -362,6 +362,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function updateLahmacun(_event: Event): void {
         let element: string = " Lahmacun with vegan minced meat, ";
         order.push(element);
+
         document.getElementById("selectedingredients").innerHTML += element;
     }
 
@@ -386,7 +387,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             document.getElementById("order").innerHTML = "order: ";
             document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
 
-            for (let i: number = overallsatisfaction; i++;) {
+            for (let i: number = soldmeals; i++;) {
                 i.toString();
                 document.getElementById("overallsatisfaction").innerHTML += i;
 

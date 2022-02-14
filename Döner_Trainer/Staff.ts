@@ -8,6 +8,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
                 this.position = _position;
             else
                 this.position = new Vector(0, 0);
+
+
+            this.position = new Vector(_position.x, _position.y);
+            this.velocity = new Vector(0, 0);
+            this.velocity.set(500, 200);
         }
 
         public draw(): void {
@@ -206,8 +211,21 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         }
 
-        public move(): void {
-            console.log("move");
+        public move(_position: Vector, _velocity: Vector, _timeslice: number): void {
+
+            let offset: Vector = this.velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
+
+            if (this.position.x < 0)
+                this.position.x += crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += crc2.canvas.height;
+            if (this.position.x > crc2.canvas.width)
+                this.position.x -= crc2.canvas.width;
+            if (this.position.y > crc2.canvas.height)
+                this.position.y -= crc2.canvas.height;
+
         }
     }
 }

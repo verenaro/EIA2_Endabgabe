@@ -4,7 +4,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         public velocity: Vector;
         public position: Vector;
-        
+
 
         constructor(_position: Vector, _velocity: Vector) {
             if (_position)
@@ -16,7 +16,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             this.velocity.random(100, 200);
         }
 
-        public abstract move(_timeslice: number): void;
+        public abstract move(_position: Vector, _velocity: Vector, _timeslice: number): void;
 
         public abstract draw(): void;
 

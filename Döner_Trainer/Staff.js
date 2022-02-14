@@ -8,6 +8,9 @@ var EIA2_Endabgabe_Döner_Trainer;
                 this.position = _position;
             else
                 this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
+            this.position = new EIA2_Endabgabe_Döner_Trainer.Vector(_position.x, _position.y);
+            this.velocity = new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0);
+            this.velocity.set(500, 200);
         }
         draw() {
             //Body
@@ -191,8 +194,18 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
         }
-        move() {
-            console.log("move");
+        move(_position, _velocity, _timeslice) {
+            let offset = this.velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
+            if (this.position.x < 0)
+                this.position.x += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
+            if (this.position.x > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width)
+                this.position.x -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.width;
+            if (this.position.y > EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height)
+                this.position.y -= EIA2_Endabgabe_Döner_Trainer.crc2.canvas.height;
         }
     }
     EIA2_Endabgabe_Döner_Trainer.Staff = Staff;

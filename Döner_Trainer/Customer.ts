@@ -3,7 +3,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
         constructor(_position: Vector, _velocity: Vector) {
             super(_position, _velocity);
-            
+
             this.velocity = new Vector(0, 0);
         }
 
@@ -196,7 +196,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
        
 
-        public move(_timeslice: number): void {
+        public move(_position: Vector, _velocity: Vector, _timeslice: number): void {
 
          //
         }

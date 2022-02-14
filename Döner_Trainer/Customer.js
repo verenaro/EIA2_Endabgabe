@@ -183,7 +183,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             EIA2_Endabgabe_Döner_Trainer.crc2.save();
             EIA2_Endabgabe_Döner_Trainer.crc2.restore();
         }
-        move(_timeslice) {
+        move(_position, _velocity, _timeslice) {
             //
         }
     }
