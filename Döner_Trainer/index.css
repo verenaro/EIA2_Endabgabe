@@ -231,7 +231,7 @@
     #selectedingredients {
         background-color: lightgrey;
         width: 200px;
-        height: 150px;
+        height: fit-content;
         margin-left: 420px;
         margin-top: 300px;
         border: lightblue dotted;

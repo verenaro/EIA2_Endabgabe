@@ -21,13 +21,12 @@ var EIA2_Endabgabe_Döner_Trainer;
     let staffs = [];
     let customers = [];
     let order = [];
-    let basis = ["Kebap", "Yufka", "Lahmacun"];
+    let customerorder = [];
+    let basis = ["Kebap with meat", "Yufka with meat", "Lahmacun with minced meat"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
-    let word = ["with"];
     let storageLeft;
     let ingredientLeft;
-    //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
@@ -128,7 +127,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         getOrder();
         selectedIngredients();
         //Button deklarieren für Ingredients
-        //let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
+        let finishorder = document.querySelector("#finishorder");
         let kebap = document.querySelector("#kebap");
         let yufka = document.querySelector("#yufka");
         let lahmacun = document.querySelector("#lahmacun");
@@ -141,8 +140,8 @@ var EIA2_Endabgabe_Döner_Trainer;
         let reorder = document.querySelector("#reorder");
         let sauce = document.querySelector("#sauce");
         //click Listener installieren
-        //finishorder.addEventListener("click", compareOrder);
-        //kuttingboard.addEventListener("click", cutIngredients);
+        finishorder.addEventListener("click", compareOrder);
+        //cuttingboard.addEventListener("click", cutIngredients);
         kebap.addEventListener("click", updateKebap);
         yufka.addEventListener("click", updateYufka);
         lahmacun.addEventListener("click", updateLahmacun);
@@ -261,17 +260,19 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function updateSauce(_event) {
         let element = " sauce, ";
-        order.push(element);
         console.log(order);
         document.getElementById("selectedingredients").innerHTML += element;
+        order.push(element);
     }
     function selectedIngredients() {
         let selectDiv = document.getElementById("selectedingredients");
         selectDiv.innerHTML += "<br>" + " ";
     }
-    /*function compareOrder(_event: Event): void {
-
-    }*/
+    function compareOrder(_event) {
+        if (order == customerorder) {
+            document.getElementById("order").innerHTML = " ";
+        }
+    }
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {
@@ -300,8 +301,10 @@ var EIA2_Endabgabe_Döner_Trainer;
         let object1 = Math.floor(Math.random() * basis.length);
         let object2 = Math.floor(Math.random() * topping.length);
         let object3 = Math.floor(Math.random() * sauce.length);
-        let object4 = Math.floor(Math.random() * word.length);
-        let order = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
+        let objects = basis[object1] + " " + topping[object2] + " " + sauce[object3];
+        customerorder.push(objects);
+        console.log(objects);
+        let order = ["<br>" + "I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + topping[object2] + "with" + sauce[object3] + "." + " " + "Thank you."];
         let orderDiv = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
     }

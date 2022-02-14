@@ -27,12 +27,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
     let order: string[] = [];
-    
+    let customerorder: string[] = [];
 
-    let basis: string[] = ["Kebap", "Yufka", "Lahmacun"];
+
+    let basis: string[] = ["Kebap with meat", "Yufka with meat", "Lahmacun with minced meat"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
-    let word: string[] = ["with"];
 
     //neue Containerwerte
 
@@ -50,8 +50,6 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let ingredientLeft: Storage;
 
 
-
-    //let words: string[] = ["with", "without"];
     //let imgData: ImageData;
 
     window.addEventListener("load", handleLoad);
@@ -179,7 +177,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
         //Button deklarieren für Ingredients
-        //let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
+        let finishorder: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#finishorder");
         let kebap: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#kebap");
         let yufka: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#yufka");
         let lahmacun: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#lahmacun");
@@ -196,8 +194,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
 
         //click Listener installieren
-        //finishorder.addEventListener("click", compareOrder);
-        //kuttingboard.addEventListener("click", cutIngredients);
+        finishorder.addEventListener("click", compareOrder);
+        //cuttingboard.addEventListener("click", cutIngredients);
         kebap.addEventListener("click", updateKebap);
         yufka.addEventListener("click", updateYufka);
         lahmacun.addEventListener("click", updateLahmacun);
@@ -372,11 +370,12 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateSauce(_event: Event): void {
         let element: string = " sauce, ";
-        order.push(element);
+
         console.log(order);
-        
+
 
         document.getElementById("selectedingredients").innerHTML += element;
+        order.push(element);
     }
 
     function selectedIngredients(): void {
@@ -384,9 +383,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         selectDiv.innerHTML += "<br>" + " ";
     }
 
-    /*function compareOrder(_event: Event): void {
-
-    }*/
+    function compareOrder(_event: Event): void {
+        if (order == customerorder) {
+            document.getElementById("order").innerHTML = " ";
+        }
+    }
 
 
 
@@ -444,10 +445,17 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let object1: number = Math.floor(Math.random() * basis.length);
         let object2: number = Math.floor(Math.random() * topping.length);
         let object3: number = Math.floor(Math.random() * sauce.length);
-        let object4: number = Math.floor(Math.random() * word.length);
+
+        let objects: string = basis[object1] + " " + topping[object2] + " " + sauce[object3];
+
+        customerorder.push(objects);
+        console.log(objects);
+
+        let order: string[] = ["<br>" + "I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + topping[object2] + "with" + sauce[object3] + "." + " " + "Thank you."];
 
 
-        let order: string[] = ["I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + word[object4] + " " + sauce[object3] + "." + " " + "Thank you."];
+
+
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
