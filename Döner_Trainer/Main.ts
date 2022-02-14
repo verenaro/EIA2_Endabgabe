@@ -17,6 +17,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let containerCapacity: number;
     let staffRestperiod: number;
     //let staffChoice: number;
+    let overallsatisfaction: number = 0;
 
 
 
@@ -77,10 +78,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("cabbage").hidden = true;
         document.getElementById("sauce").hidden = true;
         document.getElementById("cuttingboard").hidden = true;
-        document.getElementById("happiness").hidden = true;
-        document.getElementById("color").hidden = true;
-        document.getElementById("progress").hidden = true;
         document.getElementById("selectedingredients").hidden = true;
+        document.getElementById("overallsatisfaction").hidden = true;
 
     }
 
@@ -145,10 +144,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         document.getElementById("cabbage").hidden = false;
         document.getElementById("sauce").hidden = false;
         document.getElementById("cuttingboard").hidden = false;
-        document.getElementById("happiness").hidden = false;
-        document.getElementById("color").hidden = false;
-        document.getElementById("progress").hidden = false;
         document.getElementById("selectedingredients").hidden = false;
+        document.getElementById("overallsatisfaction").hidden = false;
 
 
 
@@ -384,10 +381,17 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     function compareOrder(_event: Event): void {
-        if (order.length != customerorder.length) {
-            document.getElementById("order").innerHTML = " ";
-            document.getElementById("selectedingredients").innerHTML = " ";
 
+        if (order.length != customerorder.length) {
+            document.getElementById("order").innerHTML = "order: ";
+            document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
+
+            for (let i: number = overallsatisfaction; i++;) {
+                i.toString();
+                document.getElementById("overallsatisfaction").innerHTML += i;
+
+            }
+            
             getOrder();
         }
     }
@@ -454,11 +458,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         customerorder.push(objects);
         console.log(objects);
 
-        let order: string[] = ["<br>" + "I would like one" + " " + basis[object1] + " " + " with " + " " + topping[object2] + " " + " and " + " "  + "with" + " " + sauce[object3] + "." + " " + "Thank you."];
-
-
-
-
+        let order: string[] = ["<br>" + "I would like one" + " " + basis[object1] + " " + " with " + " " + topping[object2] + " " + " and " + " " + "with" + " " + sauce[object3] + "." + " " + "Thank you."];
 
         let orderDiv: HTMLElement = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;

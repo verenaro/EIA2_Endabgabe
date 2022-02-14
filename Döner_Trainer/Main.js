@@ -17,6 +17,8 @@ var EIA2_Endabgabe_Döner_Trainer;
     let storageCapacity;
     let containerCapacity;
     let staffRestperiod;
+    //let staffChoice: number;
+    let overallsatisfaction = 0;
     let ingredients = [];
     let staffs = [];
     let customers = [];
@@ -50,10 +52,8 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("cabbage").hidden = true;
         document.getElementById("sauce").hidden = true;
         document.getElementById("cuttingboard").hidden = true;
-        document.getElementById("happiness").hidden = true;
-        document.getElementById("color").hidden = true;
-        document.getElementById("progress").hidden = true;
         document.getElementById("selectedingredients").hidden = true;
+        document.getElementById("overallsatisfaction").hidden = true;
     }
     function prepareGame(_event) {
         formData = new FormData(document.forms[0]);
@@ -103,10 +103,8 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("cabbage").hidden = false;
         document.getElementById("sauce").hidden = false;
         document.getElementById("cuttingboard").hidden = false;
-        document.getElementById("happiness").hidden = false;
-        document.getElementById("color").hidden = false;
-        document.getElementById("progress").hidden = false;
         document.getElementById("selectedingredients").hidden = false;
+        document.getElementById("overallsatisfaction").hidden = false;
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
         //calls
@@ -270,8 +268,12 @@ var EIA2_Endabgabe_Döner_Trainer;
     }
     function compareOrder(_event) {
         if (order.length != customerorder.length) {
-            document.getElementById("order").innerHTML = " ";
-            document.getElementById("selectedingredients").innerHTML = " ";
+            document.getElementById("order").innerHTML = "order: ";
+            document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
+            for (let i = overallsatisfaction; i++;) {
+                i.toString();
+                document.getElementById("overallsatisfaction").innerHTML += i;
+            }
             getOrder();
         }
     }
