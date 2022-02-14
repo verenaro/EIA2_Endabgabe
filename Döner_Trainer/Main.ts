@@ -30,7 +30,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let customerorder: string[] = [];
 
 
-    let basis: string[] = ["Kebap with meat", "Yufka with meat", "Lahmacun with minced meat"];
+    let basis: string[] = ["Kebap with vegan meat", "Yufka with vegan meat", "Lahmacun with vegan minced meat"];
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
 
@@ -276,7 +276,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function updateCabbage(_event: Event): void {
 
-        let element: string = " cabbage, ";
+        let element: string = " red cabbage, ";
         order.push(element);
 
         storageLeft.cabbage -= 30;
@@ -384,8 +384,11 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     function compareOrder(_event: Event): void {
-        if (order == customerorder) {
+        if (order.length != customerorder.length) {
             document.getElementById("order").innerHTML = " ";
+            document.getElementById("selectedingredients").innerHTML = " ";
+
+            getOrder();
         }
     }
 
@@ -451,7 +454,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         customerorder.push(objects);
         console.log(objects);
 
-        let order: string[] = ["<br>" + "I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + topping[object2] + "with" + sauce[object3] + "." + " " + "Thank you."];
+        let order: string[] = ["<br>" + "I would like one" + " " + basis[object1] + " " + " with " + " " + topping[object2] + " " + " and " + " "  + "with" + " " + sauce[object3] + "." + " " + "Thank you."];
 
 
 

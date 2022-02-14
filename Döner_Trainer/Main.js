@@ -22,7 +22,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let customers = [];
     let order = [];
     let customerorder = [];
-    let basis = ["Kebap with meat", "Yufka with meat", "Lahmacun with minced meat"];
+    let basis = ["Kebap with vegan meat", "Yufka with vegan meat", "Lahmacun with vegan minced meat"];
     let topping = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce = ["sauce"];
     let storageLeft;
@@ -200,7 +200,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         showContainerCapacity();
     }
     function updateCabbage(_event) {
-        let element = " cabbage, ";
+        let element = " red cabbage, ";
         order.push(element);
         storageLeft.cabbage -= 30;
         if (storageLeft.cabbage <= 0) {
@@ -269,8 +269,10 @@ var EIA2_Endabgabe_Döner_Trainer;
         selectDiv.innerHTML += "<br>" + " ";
     }
     function compareOrder(_event) {
-        if (order == customerorder) {
+        if (order.length != customerorder.length) {
             document.getElementById("order").innerHTML = " ";
+            document.getElementById("selectedingredients").innerHTML = " ";
+            getOrder();
         }
     }
     // Mitarbeiter zeichnen lassen
@@ -304,7 +306,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         let objects = basis[object1] + " " + topping[object2] + " " + sauce[object3];
         customerorder.push(objects);
         console.log(objects);
-        let order = ["<br>" + "I would like one" + " " + basis[object1] + " " + "with" + " " + topping[object2] + " " + "and" + " " + topping[object2] + "with" + sauce[object3] + "." + " " + "Thank you."];
+        let order = ["<br>" + "I would like one" + " " + basis[object1] + " " + " with " + " " + topping[object2] + " " + " and " + " " + "with" + " " + sauce[object3] + "." + " " + "Thank you."];
         let orderDiv = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
     }
