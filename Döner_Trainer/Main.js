@@ -2,7 +2,7 @@
 /*Endabgabe EIA2_Döner_Trainer
 Name: Verena Rothweiler
 Matrikel: 270156
-Datum:
+Datum: 15.02.2022
 Quellen: Zusammenarbeit mit Neslisah Koc
 */
 var EIA2_Endabgabe_Döner_Trainer;
@@ -12,6 +12,7 @@ var EIA2_Endabgabe_Döner_Trainer;
     let customerAmount;
     let storageCapacity;
     let containerCapacity;
+    //Arrays
     let ingredients = [];
     let staffs = [];
     let customers = [];
@@ -24,13 +25,14 @@ var EIA2_Endabgabe_Döner_Trainer;
     let sauce = ["sauce"];
     let storageLeft;
     let ingredientLeft;
-    let imgData;
+    //let imgData: ImageData;
+    //Beim Laden der Seite wird handleLoad aufgerufen
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
-        // start Button deklarieren, prepareGame aufrufen
+        //start Button deklarieren, prepareGame aufrufen
         let startButton = document.querySelector("#startButton");
         startButton.addEventListener("click", prepareGame);
-        //Elemente verstecken
+        //Div Elemente und Button Elemente verstecken
         document.getElementById("gamefield").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
@@ -51,17 +53,22 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("soldmeals").hidden = true;
     }
     function prepareGame(_event) {
+        //neues FormData Objekt wird erzeugt und alle Schlüsselwertepaare werden mitgegeben
         formData = new FormData(document.forms[0]);
         //console.log(formData);
+        //Deklariere form und body
         let form = document.querySelector("form");
         let body = document.querySelector("body");
+        //entferne form vom Body
         body.removeChild(form);
-        //Werte aus dem FormData als Variablen speichern
+        //Werte aus dem FormData als Variablen deklarieren
         staffAmount = Number(formData.get("staffamount"));
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
         //staffRestperiod = Number(formData.get("restperiod"));
+        //Gebe allen Zutaten den Wert, der im Formular ausgewählt wurde
+        //Zum updaten der Werte
         storageLeft = {
             salad: containerCapacity,
             cabbage: containerCapacity,
@@ -78,10 +85,11 @@ var EIA2_Endabgabe_Döner_Trainer;
         };
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         //console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
+        //rufe Spielseite auf
         buildGamescreen();
     }
     function buildGamescreen() {
-        //Elemente anzeigen
+        //verteckte Divs und Button Elemente anzeigen
         document.getElementById("gamefield").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
@@ -103,7 +111,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         //Canvas auswählen
         let canvas = document.querySelector("canvas");
         EIA2_Endabgabe_Döner_Trainer.crc2 = canvas.getContext("2d");
-        //calls
+        //rufe alle Funktionen auf um Hintergrud zu malen und Container sowie Storage upzudaten
         drawCounter(new EIA2_Endabgabe_Döner_Trainer.Vector(550, 370));
         drawCuttingboard(new EIA2_Endabgabe_Döner_Trainer.Vector(800, 100));
         drawContainer(new EIA2_Endabgabe_Döner_Trainer.Vector(1100, 370));
@@ -146,24 +154,28 @@ var EIA2_Endabgabe_Döner_Trainer;
         refill.addEventListener("click", refillContainer);
         reorder.addEventListener("click", reorderIngredients);
         sauce.addEventListener("click", updateSauce);
-        //console.log(onion);
+        //rufe update alle 20 ms auf
         window.setInterval(update, 20);
+        //rufe drawCustomer nach einer Minte auf
         setInterval(drawCustomer, 60000);
     }
     function update() {
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        EIA2_Endabgabe_Döner_Trainer.crc2.putImageData(imgData, 0, 0);
-        for (let staff of staffs) {
-            staff.move(new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0), new EIA2_Endabgabe_Döner_Trainer.Vector(200, 300), 5);
-        }
+        //crc2.putImageData(imgData, 0, 0);
+        //hier sollen die Mitarbeiter bewegt werden
+        /*for (let staff of staffs) {
+            staff.move(new Vector(0, 0), new Vector(200, 300), 5);
+
+        }*/
     }
-    // Containerstand anzeigen
+    //Containerstand anzeigen
     function showContainerCapacity() {
         let storageDiv = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + ingredientLeft.onion + " g onions " + "<br>" + ingredientLeft.corn + " g of corn" + "<br>" + ingredientLeft.tomato + " g of tomatoes " + "<br>" + ingredientLeft.salad + " g of salad" + "<br>" + ingredientLeft.cabbage + " g of cabbage" + "<br>";
         let containerDiv = document.getElementById("containerstorage");
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
+    //Ingredients im Storage auffüllen
     function reorderIngredients(_event) {
         ingredientLeft = {
             salad: storageCapacity,
@@ -174,6 +186,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         };
         showContainerCapacity();
     }
+    //Ingredients in den Containern auffüllen
     function refillContainer(_event) {
         storageLeft = {
             salad: containerCapacity,
@@ -184,18 +197,25 @@ var EIA2_Endabgabe_Döner_Trainer;
         };
         showContainerCapacity();
     }
+    //Update Ingredients
     function updateSalad(_event) {
-        let x = _event.offsetX;
-        let y = _event.offsetY;
+        //let x: number = _event.offsetX;
+        //let y: number = _event.offsetY;
+        //Deklariere element 
         let element = " salad, ";
+        //Pushe es in order Array
         order.push(element);
+        //Ziehe 30 ab
         storageLeft.salad -= 30;
+        //Wenn storageLeft.salad <= 0, Mitteilung senden 
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
         }
+        //anzeigen im selectedIngredients Div
         document.getElementById("selectedingredients").innerHTML += element;
+        //Ziehe ingredients.Left von storage.Left ab
         ingredientLeft.salad -= storageLeft.salad;
-        staffs[0].move(new EIA2_Endabgabe_Döner_Trainer.Vector(x, y), new EIA2_Endabgabe_Döner_Trainer.Vector(200, 300), 20);
+        //staffs[0].move(new Vector(x, y), new Vector(200, 300), 20);
         showContainerCapacity();
     }
     function updateCabbage(_event) {
@@ -263,29 +283,33 @@ var EIA2_Endabgabe_Döner_Trainer;
         document.getElementById("selectedingredients").innerHTML += element;
         order.push(element);
     }
+    //Ende Update Ingredients
+    //Zeige die ausgewählten Ingredients an
     function selectedIngredients() {
         let selectDiv = document.getElementById("selectedingredients");
         selectDiv.innerHTML += "<br>" + " ";
     }
+    //Vergleiche die Bestellung mit den eingesammelten Ingredients
     function compareOrder(_event) {
-        //compare orders
         for (let i = 0; i < customerorder.length; i++) {
             if (customerorder[i] == order[i]) {
-                // kunde löschen, div leeren
+                // Div leeren
                 document.getElementById("order").innerHTML = " ";
+                //customer[0] löschen
             }
             else {
-                //orderList leeren
-                document.getElementById("selectedingredients").innerHTML = "Selection of ingredients: " + "<br>";
+                //selected Ingredients leeren
+                document.getElementById("selectedingredients").innerHTML = "selected ingredients: " + "<br>";
             }
         }
-        //div mit neuer Bestellung füllen,
+        //Div mit neuer Bestellung füllen
         getOrder();
     }
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
         for (let i = 0; i < staffAmount; i++) {
             let staff = new EIA2_Endabgabe_Döner_Trainer.Staff(new EIA2_Endabgabe_Döner_Trainer.Vector(-100, 0), new EIA2_Endabgabe_Döner_Trainer.Vector(0, 0));
+            //push in Staffs Array
             staffs.push(staff);
         }
         for (let staff of staffs) {
@@ -305,7 +329,7 @@ var EIA2_Endabgabe_Döner_Trainer;
             // tslint:disable-next-line: align
         }, 2000);
     }
-    // Bestellung anzeigen lassen
+    //Bestellung anzeigen lassen
     function getOrder() {
         let object1 = Math.floor(Math.random() * basis.length);
         let object2 = Math.floor(Math.random() * topping.length);
@@ -317,7 +341,7 @@ var EIA2_Endabgabe_Döner_Trainer;
         let orderDiv = document.getElementById("order");
         orderDiv.innerHTML = "order:" + "<br>" + order;
     }
-    //draw Backgorund
+    //Hintergrund zeichnen
     function drawCounter(_position) {
         //Theke zeichnen
         EIA2_Endabgabe_Döner_Trainer.crc2.beginPath();
@@ -393,6 +417,6 @@ var EIA2_Endabgabe_Döner_Trainer;
             console.log(ingredients);
         }
     }
-    // end draw Ingredients
-})(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {}));
+    //zeichen Ende
+})(EIA2_Endabgabe_Döner_Trainer || (EIA2_Endabgabe_Döner_Trainer = {})); //Ende namespace
 //# sourceMappingURL=Main.js.map

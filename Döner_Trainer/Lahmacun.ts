@@ -25,7 +25,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
             crc2.closePath();
             crc2.restore();
             crc2.save();
-            
+
         }
     }
 }

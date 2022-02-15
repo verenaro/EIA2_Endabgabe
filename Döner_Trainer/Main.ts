@@ -1,7 +1,7 @@
 /*Endabgabe EIA2_Döner_Trainer
 Name: Verena Rothweiler
 Matrikel: 270156
-Datum: 
+Datum: 15.02.2022
 Quellen: Zusammenarbeit mit Neslisah Koc
 */
 
@@ -15,12 +15,15 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let containerCapacity: number;
     //let staffRestperiod: number;
     //let soldmeals: number = 0;
+    //let overallsatisfaction = 0;
     //let StaffisMad: boolean = false;
     //let CustomerisMad: boolean = false;
 
+    //rufe canvas und crc2 auf und lasse es für alle Klassen greifbar machen
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement | null;
 
+    //Arrays
     let ingredients: Ingredient[] = [];
     let staffs: Staff[] = [];
     let customers: Customer[] = [];
@@ -34,7 +37,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let topping: string[] = ["corn", "salad", "red cabbage", "onion", "tomato"];
     let sauce: string[] = ["sauce"];
 
-    //neue Containerwerte
+    //Interface für storage und containerstorage
     interface Storage {
         salad: number;
         cabbage: number;
@@ -47,17 +50,18 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let storageLeft: Storage;
     let ingredientLeft: Storage;
 
-    let imgData: ImageData;
+    //let imgData: ImageData;
 
+    //Beim Laden der Seite wird handleLoad aufgerufen
     window.addEventListener("load", handleLoad);
 
     function handleLoad(_event: Event): void {
 
-        // start Button deklarieren, prepareGame aufrufen
+        //start Button deklarieren, prepareGame aufrufen
         let startButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#startButton")!;
         startButton.addEventListener("click", prepareGame);
 
-        //Elemente verstecken
+        //Div Elemente und Button Elemente verstecken
         document.getElementById("gamefield").hidden = true;
         document.getElementById("storage").hidden = true;
         document.getElementById("containerstorage").hidden = true;
@@ -82,21 +86,26 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function prepareGame(_event: Event): void {
 
+        //neues FormData Objekt wird erzeugt und alle Schlüsselwertepaare werden mitgegeben
         formData = new FormData(document.forms[0]);
         //console.log(formData);
 
+        //Deklariere form und body
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
         let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
 
+        //entferne form vom Body
         body.removeChild(form);
 
-        //Werte aus dem FormData als Variablen speichern
+        //Werte aus dem FormData als Variablen deklarieren
         staffAmount = Number(formData.get("staffamount"));
         customerAmount = Number(formData.get("customeramount"));
         storageCapacity = Number(formData.get("storagecapacity"));
         containerCapacity = Number(formData.get("containercapacity"));
         //staffRestperiod = Number(formData.get("restperiod"));
 
+        //Gebe allen Zutaten den Wert, der im Formular ausgewählt wurde
+        //Zum updaten der Werte
         storageLeft = {
             salad: containerCapacity,
             cabbage: containerCapacity,
@@ -116,6 +125,8 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         //imgData = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         //console.log(staffAmount, customerAmount, storageCapacity, containerCapacity, staffRestperiod);
 
+
+        //rufe Spielseite auf
         buildGamescreen();
 
     }
@@ -123,7 +134,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     function buildGamescreen(): void {
 
-        //Elemente anzeigen
+        //verteckte Divs und Button Elemente anzeigen
         document.getElementById("gamefield").hidden = false;
         document.getElementById("storage").hidden = false;
         document.getElementById("containerstorage").hidden = false;
@@ -147,7 +158,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
         crc2 = canvas.getContext("2d")!;
 
-        //calls
+        //rufe alle Funktionen auf um Hintergrud zu malen und Container sowie Storage upzudaten
         drawCounter(new Vector(550, 370));
         drawCuttingboard(new Vector(800, 100));
         drawContainer(new Vector(1100, 370));
@@ -195,10 +206,10 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         reorder.addEventListener("click", reorderIngredients);
         sauce.addEventListener("click", updateSauce);
 
-        //console.log(onion);
-
+        //rufe update alle 20 ms auf
         window.setInterval(update, 20);
 
+        //rufe drawCustomer nach einer Minte auf
         setInterval(drawCustomer, 60000);
 
 
@@ -206,17 +217,18 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     function update(): void {
 
         //crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        crc2.putImageData(imgData, 0, 0);
+        //crc2.putImageData(imgData, 0, 0);
 
-        for (let staff of staffs) {
+        //hier sollen die Mitarbeiter bewegt werden
+        /*for (let staff of staffs) {
             staff.move(new Vector(0, 0), new Vector(200, 300), 5);
 
-        }
+        }*/
 
 
     }
-    // Containerstand anzeigen
 
+    //Containerstand anzeigen
     function showContainerCapacity(): void {
         let storageDiv: HTMLElement = document.getElementById("storage");
         storageDiv.innerHTML = "storage:" + "<br>" + "<br>" + ingredientLeft.onion + " g onions " + "<br>" + ingredientLeft.corn + " g of corn" + "<br>" + ingredientLeft.tomato + " g of tomatoes " + "<br>" + ingredientLeft.salad + " g of salad" + "<br>" + ingredientLeft.cabbage + " g of cabbage" + "<br>";
@@ -225,6 +237,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         containerDiv.innerHTML = "container storage:" + "<br>" + "<br>" + storageLeft.onion + " g of onion " + "<br>" + storageLeft.corn + " g of corn " + "<br>" + storageLeft.tomato + " g of tomato " + "<br>" + storageLeft.salad + " g of salad" + "<br>" + storageLeft.cabbage + " g of cabbage";
     }
 
+    //Ingredients im Storage auffüllen
     function reorderIngredients(_event: Event): void {
         ingredientLeft = {
             salad: storageCapacity,
@@ -236,6 +249,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
+    //Ingredients in den Containern auffüllen
     function refillContainer(_event: MouseEvent): void {
         storageLeft = {
             salad: containerCapacity,
@@ -247,27 +261,34 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         showContainerCapacity();
     }
 
+    //Update Ingredients
     function updateSalad(_event: MouseEvent): void {
 
-        let x: number = _event.offsetX;
-        let y: number = _event.offsetY;
+        //let x: number = _event.offsetX;
+        //let y: number = _event.offsetY;
 
 
+        //Deklariere element 
         let element: string = " salad, ";
 
+        //Pushe es in order Array
         order.push(element);
 
+        //Ziehe 30 ab
         storageLeft.salad -= 30;
 
+        //Wenn storageLeft.salad <= 0, Mitteilung senden 
         if (storageLeft.salad <= 0) {
             alert("please cut new salad");
         }
 
+        //anzeigen im selectedIngredients Div
         document.getElementById("selectedingredients").innerHTML += element;
 
+        //Ziehe ingredients.Left von storage.Left ab
         ingredientLeft.salad -= storageLeft.salad;
 
-        staffs[0].move(new Vector(x, y), new Vector(200, 300), 20);
+        //staffs[0].move(new Vector(x, y), new Vector(200, 300), 20);
 
         showContainerCapacity();
     }
@@ -376,30 +397,37 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         order.push(element);
     }
 
+    //Ende Update Ingredients
+
+    //Zeige die ausgewählten Ingredients an
     function selectedIngredients(): void {
+
         let selectDiv: HTMLElement = document.getElementById("selectedingredients");
         selectDiv.innerHTML += "<br>" + " ";
+
     }
 
+    //Vergleiche die Bestellung mit den eingesammelten Ingredients
     function compareOrder(_event: Event): void {
-        //compare orders
+
 
 
         for (let i: number = 0; i < customerorder.length; i++) {
             if (customerorder[i] == order[i]) {
 
-                // kunde löschen, div leeren
+                // Div leeren
                 document.getElementById("order").innerHTML = " ";
+                //customer[0] löschen
 
 
             } else {
-                //orderList leeren
-                document.getElementById("selectedingredients").innerHTML = "Selection of ingredients: " + "<br>";
+                //selected Ingredients leeren
+                document.getElementById("selectedingredients").innerHTML = "selected ingredients: " + "<br>";
 
             }
 
         }
-        //div mit neuer Bestellung füllen,
+        //Div mit neuer Bestellung füllen
         getOrder();
 
     }
@@ -412,6 +440,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         for (let i: number = 0; i < staffAmount; i++) {
             let staff: Staff = new Staff(new Vector(-100, 0), new Vector(0, 0));
 
+            //push in Staffs Array
             staffs.push(staff);
 
         }
@@ -454,7 +483,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
 
-    // Bestellung anzeigen lassen
+    //Bestellung anzeigen lassen
     function getOrder(): void {
 
         let object1: number = Math.floor(Math.random() * basis.length);
@@ -473,7 +502,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
 
     }
 
-    //draw Backgorund
+    //Hintergrund zeichnen
 
     function drawCounter(_position: Vector): void {
         //Theke zeichnen
@@ -582,10 +611,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
         }
     }
 
-    // end draw Ingredients
+    //zeichen Ende
 
-
-
-
-}
+}//Ende namespace
 
