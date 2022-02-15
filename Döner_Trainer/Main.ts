@@ -14,7 +14,7 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     let storageCapacity: number;
     let containerCapacity: number;
     //let staffRestperiod: number;
-    let soldmeals: number = 0;
+    //let soldmeals: number = 0;
     //let StaffisMad: boolean = false;
     //let CustomerisMad: boolean = false;
 
@@ -382,19 +382,26 @@ namespace EIA2_Endabgabe_Döner_Trainer {
     }
 
     function compareOrder(_event: Event): void {
+        //compare orders
 
-        if (order.length != customerorder.length) {
-            document.getElementById("order").innerHTML = "order: ";
-            document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
 
-            for (let i: number = soldmeals; i++;) {
-                i.toString();
-                document.getElementById("overallsatisfaction").innerHTML += i;
+        for (let i: number = 0; i < customerorder.length; i++) {
+            if (customerorder[i] == order[i]) {
+
+                // kunde löschen, div leeren
+                document.getElementById("order").innerHTML = " ";
+
+
+            } else {
+                //orderList leeren
+                document.getElementById("selectedingredients").innerHTML = "Selection of ingredients: " + "<br>";
 
             }
 
-            getOrder();
         }
+        //div mit neuer Bestellung füllen,
+        getOrder();
+
     }
 
 

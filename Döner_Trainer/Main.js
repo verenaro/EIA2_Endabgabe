@@ -12,8 +12,6 @@ var EIA2_Endabgabe_Döner_Trainer;
     let customerAmount;
     let storageCapacity;
     let containerCapacity;
-    //let staffRestperiod: number;
-    let soldmeals = 0;
     let ingredients = [];
     let staffs = [];
     let customers = [];
@@ -270,15 +268,19 @@ var EIA2_Endabgabe_Döner_Trainer;
         selectDiv.innerHTML += "<br>" + " ";
     }
     function compareOrder(_event) {
-        if (order.length != customerorder.length) {
-            document.getElementById("order").innerHTML = "order: ";
-            document.getElementById("selectedingredients").innerHTML = " selected ingredients:  <br> ";
-            for (let i = soldmeals; i++;) {
-                i.toString();
-                document.getElementById("overallsatisfaction").innerHTML += i;
+        //compare orders
+        for (let i = 0; i < customerorder.length; i++) {
+            if (customerorder[i] == order[i]) {
+                // kunde löschen, div leeren
+                document.getElementById("order").innerHTML = " ";
             }
-            getOrder();
+            else {
+                //orderList leeren
+                document.getElementById("selectedingredients").innerHTML = "Selection of ingredients: " + "<br>";
+            }
         }
+        //div mit neuer Bestellung füllen,
+        getOrder();
     }
     // Mitarbeiter zeichnen lassen
     function drawStaff() {
